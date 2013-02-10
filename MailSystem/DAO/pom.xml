@@ -5,7 +5,7 @@
     <artifactId>MailSystem</artifactId>
     <version>1.0</version>
   </parent>
-  <artifactId>MailClient</artifactId>
+  <artifactId>DAO</artifactId>
   <dependencies>
   	<dependency>
   		<groupId>mailsystem</groupId>
@@ -13,23 +13,4 @@
   		<version>1.0</version>
   	</dependency>
   </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.3.2</version>
-        <executions>
-          <execution>
-            <configuration>
-              <archive>
-                <manifest>
-                  <mainClass>client.Client</mainClass>
-                </manifest>
-              </archive>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>

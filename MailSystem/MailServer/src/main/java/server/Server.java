@@ -35,21 +35,21 @@ public class Server {
 		if (!openServerSocket()) {
 			return;
 		}
-		
-		while (!serverStoped) {
-			try {
-				clientSocket = server.accept();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			while (!serverStoped) {
+				try {
+					clientSocket = server.accept();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				new Thread(new ServerProcess(clientSocket,mailServer,folderServer,loginServer)).start();
 			}
-			new Thread(new ServerProcess(clientSocket,mailServer,folderServer,loginServer)).start();
-		}
-		
-		if (!closeServerSocket()) {
-			return;
-		}
-		
-		System.out.println("Server stoped");
+		} finally {
+			if (!closeServerSocket()) {
+				return;
+			}
+			System.out.println("Server stoped");
+		}	
 	}
 	
 	private boolean openServerSocket() {

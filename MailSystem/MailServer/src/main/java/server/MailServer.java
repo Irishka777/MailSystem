@@ -10,6 +10,7 @@ public class MailServer {
 	public Letter sendLetter(ObjectInputStream input) {
 		try {
 			Letter letter = (Letter) input.readObject();
+			
 			System.out.println(letter);
 			return letter;
 		} catch (ClassNotFoundException | IOException e) {

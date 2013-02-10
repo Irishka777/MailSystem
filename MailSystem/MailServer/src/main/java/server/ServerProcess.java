@@ -35,7 +35,7 @@ public class ServerProcess implements Runnable {
 			return;
 		}
 		
-//		while (!clientSocket.isClosed()) {
+		closeSocket: while (true) {
 			try {
 				switch ((ToDo) input.readObject()) {
 				case Login:
@@ -56,11 +56,15 @@ public class ServerProcess implements Runnable {
 					break;
 				case Update:
 					break;
+				case CloseSocket:
+					break closeSocket;
 				}
+				
+//				output.writeObject("Ready");
 			} catch (ClassNotFoundException | IOException e) {
 				e.printStackTrace();
 			}
-//		}	
+		}	
 	}
 	
 	private boolean createInputAndOutputStreams() {

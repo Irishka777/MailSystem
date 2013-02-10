@@ -12,43 +12,38 @@ public class Letter implements Serializable {
 	private String theme;
 	private String[] letterBody;
 	
-	public Letter() {
-		sender = "default";
-		receiver = "default";
-		date = new java.util.Date();
-		theme = "default";
-		letterBody = null;
+	public void setSender(String senderEmail) {
+		sender = senderEmail;
 	}
-	
-	public Letter(String sender, String receiver, Date date, String theme, String[] letterBody) {
-		this.sender = sender;
-		this.receiver = receiver;
-		this.date = date;
-		this.theme = theme;
-		this.letterBody = letterBody;
-	}
-	
 	public String getSender() {
 		return sender;
 	}
 	
+	public void setReceiver(String receiverEmail) {
+		receiver = receiverEmail;
+	}
 	public String getReceiver() {
 		return receiver;
 	}
 	
+	public void setDate(Date currentDate) {
+		date = currentDate;
+	}
 	public Date getDate() {
 		return date;
 	}
 	
+	public void setTheme(String letterTheme) {
+		theme = letterTheme;
+	}
 	public String getTheme() {
 		return theme;
 	}
 	
+	public void setLetterBody(String[] letterBody) {
+		this.letterBody = letterBody;
+	}
 	public String[] getLetterBody() {
 		return letterBody;
-	}
-	
-	public String toString() {
-		return "from " + sender + " to " + receiver;
 	}
 }

@@ -42,23 +42,24 @@ public class Client {
 			return;
 		}
 		
-		if (!createInputAndOutputStreams()) {
-			closeClientSocket();
-			return;
-		}
-		
-			String[] l = new String[2];
-			l[0] = "text1";
-			l[1] = "text2";
-			Letter letter = new Letter("Name1","Name2",new java.util.Date(),"theme",l);
-			sendLetter(letter);
-		
+		try {
+			if (!createInputAndOutputStreams()) {
+				closeClientSocket();
+				return;
+			}
 			
-		if (!closeClientSocket()) {
-			return;
-		}
-		
-		System.out.println("Client stoped");
+			String[] letterBody = {"text1","text2"};
+			
+			Letter letter = createLetter("Mail1", "Mail2", "Test", letterBody);
+			
+			sendLetter(letter);
+			
+		} finally {
+			if (!closeClientSocket()) {
+				return;
+			}			
+			System.out.println("Client stoped");
+		}	
 	}
 	
 	private boolean openClientSocket() {
@@ -103,6 +104,7 @@ public class Client {
 	private boolean closeClientSocket()
 	{
 		try {
+			output.writeObject(ToDo.CloseSocket);
 			clientSocket.close();
 			return true;
 		} catch (IOException e) {
@@ -112,6 +114,16 @@ public class Client {
 		}
 	}
 	
+	public Letter createLetter(String sender, String receiver, String theme, String[] letterBody) {
+		Letter letter = new Letter();
+		letter.setSender(sender);
+		letter.setReceiver(receiver);
+		letter.setDate(new java.util.Date());
+		letter.setTheme(theme);
+		letter.setLetterBody(letterBody);
+		return letter;
+	}
+	
 	public boolean sendLetter(Letter letter) {
 		try {
 			output.writeObject(ToDo.SendLetter);
@@ -119,8 +131,7 @@ public class Client {
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
-		}
-		
+			return false;		
+		}	
 	}
 }

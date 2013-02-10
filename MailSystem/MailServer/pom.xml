@@ -12,19 +12,29 @@
   		<artifactId>ServerAndClientShareableData</artifactId>
   		<version>1.0</version>
   	</dependency>
+  	<dependency>
+  		<groupId>mailsystem</groupId>
+  		<artifactId>DAO</artifactId>
+  		<version>1.0</version>
+  	</dependency>
   </dependencies>
   <build>
-  	<plugins>
-  		<plugin>
+    <plugins>
+      <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-        	<archive>
-     		 <manifest>
-     		 	<mainClass>server.Server</mainClass>
-     		 </manifest>
-   			</archive>
-        </configuration>	 
+        <version>2.3.2</version>
+        <executions>
+          <execution>
+            <configuration>
+              <archive>
+                <manifest>
+                  <mainClass>server.Server</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
- 	 </plugins>
+    </plugins>
   </build>
 </project>
