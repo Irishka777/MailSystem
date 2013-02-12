@@ -8,6 +8,6 @@
   	<module>MailClient</module>
   	<module>ServerAndClientShareableData</module>
   	<module>MailServer</module>
-  	<module>DAO</module>
+  	
   </modules>
 </project>
