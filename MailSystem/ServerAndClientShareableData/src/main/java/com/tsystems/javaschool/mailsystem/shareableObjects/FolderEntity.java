@@ -6,8 +6,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -15,6 +17,8 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Folder")//,uniqueConstraints = @UniqueConstraint(columnNames = { "folderName", "emailAddress" }))
+@NamedQuery(name = "findByEmailAddressAndFolderName", query = "SELECT folder FROM FolderEntity folder WHERE " +
+		"folder.mailBox = :mailBox AND folder.folderName = :folderName")
 public class FolderEntity implements Serializable {
 	@Id
 	@GeneratedValue
@@ -25,7 +29,7 @@ public class FolderEntity implements Serializable {
 	@OneToOne
 	private MailBoxEntity mailBox;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<MessageEntity> listOfMessages;
 	
 	public FolderEntity() {}

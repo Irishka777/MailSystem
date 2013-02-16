@@ -42,6 +42,14 @@ public class MessageEntity implements Serializable {
 		this.messageBody = messageBody;
 	}
 	
+	public MessageEntity(MessageEntity message) {
+		this.sender = message.getReceiver();
+		this.receiver = message.getReceiver();
+		this.date = message.getDate();
+		this.theme = message.getTheme();
+		this.messageBody = message.getMessageBody();
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}

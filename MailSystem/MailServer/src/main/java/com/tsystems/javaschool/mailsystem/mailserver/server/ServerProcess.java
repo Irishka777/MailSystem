@@ -8,8 +8,8 @@ import java.net.Socket;
 import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.LoginService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
-import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
-
+import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
+//import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
 
  /*
   * object ServerProcess creates for every server client
@@ -41,28 +41,41 @@ public class ServerProcess implements Runnable {
 		
 		closeSocket: while (true) {
 			try {
-				switch ((ToDo) input.readObject()) {
+				CommandAndDataObject commandAndData = null;
+				
+				try {
+					commandAndData = (CommandAndDataObject) input.readObject();
+				} catch (ClassNotFoundException e) {
+					System.out.println(e.getMessage() + "InputStrean is in an indeterminate state, closeing socket");
+					break closeSocket;			
+				}
+				
+				switch (commandAndData.getCommand()) {
 				case Registration:		
-					output.writeObject(loginService.registration(input));
+					output.writeObject(loginService.registration(commandAndData.getData()));
 					break;
 				case Login:
 					break;
 				case GetMailBoxEntityByMailAddress:
-					output.writeObject(loginService.getMailBoxEntityByEmailAddress(input));
+					output.writeObject(loginService.getMailBoxEntityByEmailAddress(commandAndData.getData()));
 					break;
 				case SendMessage:
-					output.writeObject(messageService.sendMessage(input));
-					break;
-				case DeleteMessage:
-					messageService.deleteMessage(input);
+					output.writeObject(messageService.sendMessage(commandAndData.getData()));
 					break;
 				case SaveMessage:
+					output.writeObject(messageService.saveMessage(commandAndData.getData()));
+					break;
+				case DeleteMessage:
+					output.writeObject(messageService.deleteMessage(commandAndData.getData()));
 					break;
 				case CreateFolder:
+					output.writeObject(folderService.createFolder(commandAndData.getData()));
 					break;
 				case DeleteFolder:
+					output.writeObject(folderService.deleteFolder(commandAndData.getData()));
 					break;
 				case RenameFolder:
+					output.writeObject(folderService.renameFolder(commandAndData.getData()));
 					break;
 				case MoveMessageToAnotherFolder:
 					break;
@@ -71,15 +84,11 @@ public class ServerProcess implements Runnable {
 				case CloseSocket:
 					break closeSocket;
 				}
-			} catch (ClassNotFoundException e) {
-				
-				System.out.println("ClassNotFoundException: Class of a serialized object cannot be found");
-				e.printStackTrace();
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("IOException in process of comunication with client" + e.getMessage() + "closing socket");
 				break closeSocket;
 			}
-		}	
+		}
 	}
 	
 	private boolean createInputAndOutputStreams() {
