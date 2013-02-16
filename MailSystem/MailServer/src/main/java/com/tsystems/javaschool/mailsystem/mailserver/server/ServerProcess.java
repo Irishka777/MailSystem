@@ -5,7 +5,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import com.tsystems.javaschool.mailsystem.shareableObjects.Message;
+import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
+import com.tsystems.javaschool.mailsystem.mailserver.service.LoginService;
+import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
 
 
@@ -19,15 +21,16 @@ public class ServerProcess implements Runnable {
 	private ObjectInputStream input  = null;
 	private ObjectOutputStream output = null;
 	
-	private MessageServer messageServer = null;
-	private FolderServer folderServer = null;
-	private LoginServer loginServer = null;
+	private MessageService messageService = null;
+	private FolderService folderService = null;
+	private LoginService loginService = null;
 	
-	public ServerProcess(Socket clientSocket, MessageServer messageServer, FolderServer folderServer, LoginServer loginServer) {
+	public ServerProcess(Socket clientSocket, MessageService messageService,
+			FolderService folderService, LoginService loginService) {
 		this.clientSocket = clientSocket;
-		this.messageServer = messageServer;
-		this.folderServer = folderServer;
-		this.loginServer = loginServer;
+		this.messageService = messageService;
+		this.folderService = folderService;
+		this.loginService = loginService;
 	}
 	
 	public void run() {	
@@ -39,13 +42,19 @@ public class ServerProcess implements Runnable {
 		closeSocket: while (true) {
 			try {
 				switch ((ToDo) input.readObject()) {
+				case Registration:		
+					output.writeObject(loginService.registration(input));
+					break;
 				case Login:
 					break;
+				case GetMailBoxEntityByMailAddress:
+					output.writeObject(loginService.getMailBoxEntityByEmailAddress(input));
+					break;
 				case SendMessage:
-					messageServer.sendMessage(input);
+					output.writeObject(messageService.sendMessage(input));
 					break;
 				case DeleteMessage:
-					messageServer.deleteMessage(input);
+					messageService.deleteMessage(input);
 					break;
 				case SaveMessage:
 					break;
@@ -62,10 +71,13 @@ public class ServerProcess implements Runnable {
 				case CloseSocket:
 					break closeSocket;
 				}
+			} catch (ClassNotFoundException e) {
 				
-//				output.writeObject("Ready");
-			} catch (ClassNotFoundException | IOException e) {
+				System.out.println("ClassNotFoundException: Class of a serialized object cannot be found");
 				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+				break closeSocket;
 			}
 		}	
 	}
@@ -87,7 +99,11 @@ public class ServerProcess implements Runnable {
 		try {
 			output.writeObject("Connection set");
 			System.out.println((String) input.readObject());
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (ClassNotFoundException e) {
+			System.out.println("ClassNotFoundException: Class of a serialized object cannot be found");
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
 		}

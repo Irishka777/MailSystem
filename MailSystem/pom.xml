@@ -8,6 +8,17 @@
   	<module>MailClient</module>
   	<module>ServerAndClientShareableData</module>
   	<module>MailServer</module>
-  	
   </modules>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-entitymanager</artifactId>
+  		<version>4.1.9.Final</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>5.1.2</version>
+  	</dependency>
+  </dependencies>
 </project>

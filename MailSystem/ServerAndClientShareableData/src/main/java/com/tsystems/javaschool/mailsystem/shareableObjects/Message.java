@@ -1,16 +1,26 @@
 package com.tsystems.javaschool.mailsystem.shareableObjects;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Calendar;
 
 @SuppressWarnings("serial")
 public class Message implements Serializable {
 	
 	private String sender;
 	private String receiver;
-	private Date date;
+	private Calendar date;
 	private String theme;
 	private String messageBody;
+	
+	public Message() {}
+	
+	public Message(String sender,String receiver, String theme, String messageBody) {
+		this.sender = sender;
+		this.receiver = receiver;
+		date = Calendar.getInstance();
+		this.theme = theme;
+		this.messageBody = messageBody;
+	}
 	
 	public void setSender(String senderEmail) {
 		sender = senderEmail;
@@ -26,15 +36,15 @@ public class Message implements Serializable {
 		return receiver;
 	}
 	
-	public void setDate(Date currentDate) {
+	public void setDate(Calendar currentDate) {
 		date = currentDate;
 	}
-	public Date getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 	
-	public void setTheme(String messageTheme) {
-		theme = messageTheme;
+	public void setTheme(String theme) {
+		this.theme = theme;
 	}
 	public String getTheme() {
 		return theme;

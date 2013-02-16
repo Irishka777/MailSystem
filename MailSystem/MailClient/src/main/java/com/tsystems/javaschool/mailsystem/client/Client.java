@@ -6,8 +6,13 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import com.tsystems.javaschool.mailsystem.shareableObjects.Message;
+//import com.tsystems.javaschool.mailsystem.shareableObjects.MailBox;
+import com.tsystems.javaschool.mailsystem.shareableObjects.MailBoxEntity;
+//import com.tsystems.javaschool.mailsystem.shareableObjects.Message;
+import com.tsystems.javaschool.mailsystem.shareableObjects.MessageEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
+//import com.tsystems.javaschool.mailsystem.shareableObjects.User;
+import com.tsystems.javaschool.mailsystem.shareableObjects.UserEntity;
 
 
 public class Client {
@@ -49,9 +54,16 @@ public class Client {
 				return;
 			}
 			
-			Message message = createMessage("Mail1", "Mail2", "Test", "text");
+			MailBoxEntity mailBox = createMailBox("name1", "surname1", 1967, 12, 3, "888", "ert", "123");
+			registration(mailBox);
 			
-			sendMessage(message);
+			registration(createMailBox("name2", "surname2", 1986, 9, 3, "111", "mail", "123"));
+			
+			registration(createMailBox("name3", "surname3", 1990, 2, 2, "56-4", "yre", "123"));
+			
+			registration(createMailBox("name4", "surname4", 1980, 5, 3, "642", "ree", "123"));
+			
+			sendMessage(createMessage(mailBox,"mail","theme", "text"));
 			
 		} finally {
 			if (!closeClientSocket()) {
@@ -93,10 +105,14 @@ public class Client {
 		try {
 			System.out.println((String) input.readObject());
 			output.writeObject("Connection set");
-		} catch (ClassNotFoundException | IOException e) {
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
 		}
+		
 		return true;
 	}
 	
@@ -113,35 +129,72 @@ public class Client {
 		}
 	}
 	
-	public Message createMessage(String sender, String receiver, String theme, String messageBody) {
-		Message message = new Message();
-		message.setSender(sender);
-		message.setReceiver(receiver);		
-		message.setDate(new java.sql.Date(System.currentTimeMillis()));
-		message.setTheme(theme);
-		message.setMessageBody(messageBody);
-		return message;
-	}
-	
-	public boolean sendMessage(Message message) {
+	public MessageEntity createMessage(MailBoxEntity sender, String receiver, String theme, String messageBody) {
+		MailBoxEntity receiverMailBox = null;
 		try {
-			output.writeObject(ToDo.SendMessage);
-			output.writeObject(message);		
-			return true;
-		} catch (IOException e) {
+			output.writeObject(ToDo.GetMailBoxEntityByMailAddress);
+			output.writeObject(receiver);
+			receiverMailBox = (MailBoxEntity) input.readObject();
+			return new MessageEntity(sender,receiverMailBox,theme,messageBody);
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return false;		
+			return null;
+		} catch (IOException e) {		
+			e.printStackTrace();
+			return null;
 		}	
 	}
 	
-	public boolean saveMessage(Message message) {
+	public boolean sendMessage(MessageEntity message) {		
 		try {
-			output.writeObject(ToDo.SaveMessage);
-			output.writeObject(message);		
+			output.writeObject(ToDo.SendMessage);
+			output.writeObject(message);
+			if (input.readObject().toString().equals("false")) {			
+				System.out.println("there was an error in process of sending your message");
+				System.out.println("Reseiver with such email address does not exist");
+				return false;
+			}
 			return true;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;		
 		}
+	}
+	
+//	public boolean saveMessage(Message message) {
+//		try {
+//			output.writeObject(ToDo.SaveMessage);
+//			output.writeObject(message);		
+//			return true;
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return false;		
+//		}
+//	}
+	
+	public boolean registration(MailBoxEntity mailBox) {
+		try {
+			output.writeObject(ToDo.Registration);
+			output.writeObject(mailBox);
+			if (input.readObject().toString().equals("false")) {			
+				System.out.println("try to use another email address");
+				return false;
+			}		
+			return true;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;		
+		}
+	}
+	
+	public MailBoxEntity createMailBox(String name, String surname, int year,int month, int day,
+			String phoneNumber, String emailAddress, String password) {
+		return new MailBoxEntity(emailAddress, password, new UserEntity(name,surname,year,month,day,phoneNumber));
 	}
 }

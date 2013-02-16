@@ -4,16 +4,27 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
+import com.tsystems.javaschool.mailsystem.mailserver.service.LoginService;
+import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
+
 public class Server {
+	
+	public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("mailsystem");
 	
 	private ServerSocket server = null;
 	private int port;
 	private Socket clientSocket = null;
 	private boolean serverStoped = false;
 	
-	private MessageServer messageServer = new MessageServer();
-	private FolderServer folderServer = new FolderServer();
-	private LoginServer loginServer = new LoginServer();
+	private MessageService messageService = new MessageService();
+	private FolderService folderService = new FolderService();
+	private LoginService loginService = new LoginService();
 	
 	public Server() {
 		port = 9090;
@@ -40,9 +51,10 @@ public class Server {
 				try {
 					clientSocket = server.accept();
 				} catch (IOException e) {
+					System.out.println("IOException: an I/O error occurs when waiting for a connection");
 					e.printStackTrace();
 				}
-				new Thread(new ServerProcess(clientSocket,messageServer,folderServer,loginServer)).start();
+				new Thread(new ServerProcess(clientSocket,messageService,folderService,loginService)).start();
 			}
 		} finally {
 			if (!closeServerSocket()) {
