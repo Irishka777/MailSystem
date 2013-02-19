@@ -1,4 +1,4 @@
-package com.tsystems.javaschool.mailsystem.shareableObjects;
+package com.tsystems.javaschool.mailsystem.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;

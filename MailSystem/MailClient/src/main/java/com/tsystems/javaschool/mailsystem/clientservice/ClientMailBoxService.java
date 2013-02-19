@@ -1,13 +1,13 @@
 package com.tsystems.javaschool.mailsystem.clientservice;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
+import com.tsystems.javaschool.mailsystem.entities.UserEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
-import com.tsystems.javaschool.mailsystem.shareableObjects.MailBoxEntity;
+import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
-import com.tsystems.javaschool.mailsystem.shareableObjects.UserEntity;
 
 public class ClientMailBoxService {
 	
@@ -19,25 +19,36 @@ public class ClientMailBoxService {
 		this.output = output;
 	}
 	
-	public MailBoxEntity createMailBox(String name, String surname, int year,int month, int day,
-			String phoneNumber, String emailAddress, String password) {
+	public MailBoxEntity createMailBox(String emailAddress, String password, String name, String surname,
+			int year,int month, int day, String phoneNumber) {
 		return new MailBoxEntity(emailAddress, password, new UserEntity(name,surname,year,month,day,phoneNumber));
 	}
 	
-	public String registration(MailBoxEntity mailBox) {
+	public MailBoxEntity createMailBox(String emailAddress, String password,UserEntity user) {
+		return new MailBoxEntity(emailAddress, password, user);
+	}
+	
+	public UserEntity createUser(String name, String surname, int year,int month, int day,String phoneNumber) {
+		return new UserEntity(name,surname,year,month,day,phoneNumber);
+	}
+	
+	public ServerResponse login(MailBoxEntity mailBox) {
+		try {
+			output.writeObject(new CommandAndDataObject(ToDo.Login, mailBox));
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");	
+		}	
+	}
+	
+	public ServerResponse registration(MailBoxEntity mailBox) {
 		try {
 			output.writeObject(new CommandAndDataObject(ToDo.Registration, mailBox));
-		} catch (IOException e) {
-			return "Error in process of transfer mail box data from client to server: " + e.getMessage();		
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");	
 		}	
-		
-		try {
-			String response = (String) input.readObject();
-			return response;
-		} catch (ClassNotFoundException e) {
-			return "Cannot get response about registration from server, try again later";
-		} catch (IOException e) {
-			return "Error in process of geting response about registration from server, try again later";
-		}
 	}
 }

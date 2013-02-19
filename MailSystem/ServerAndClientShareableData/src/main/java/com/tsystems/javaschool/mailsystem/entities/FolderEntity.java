@@ -1,4 +1,4 @@
-package com.tsystems.javaschool.mailsystem.shareableObjects;
+package com.tsystems.javaschool.mailsystem.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,16 +9,22 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Folder")//,uniqueConstraints = @UniqueConstraint(columnNames = { "folderName", "emailAddress" }))
-@NamedQuery(name = "findByEmailAddressAndFolderName", query = "SELECT folder FROM FolderEntity folder WHERE " +
-		"folder.mailBox = :mailBox AND folder.folderName = :folderName")
+@Table(name = "Folder")//, uniqueConstraints = @UniqueConstraint( columnNames = { "folderName", "emailAddress" }))
+@NamedQueries({
+	@NamedQuery(name = "findByEmailAddressAndFolderName", query = "SELECT folder FROM FolderEntity folder WHERE " +
+			"folder.mailBox = :mailBox AND folder.folderName = :folderName"),
+	@NamedQuery(name = "findFoldersForMailBox", query = "SELECT folder FROM FolderEntity folder WHERE " +
+			"folder.mailBox = :mailBox")
+})
 public class FolderEntity implements Serializable {
 	@Id
 	@GeneratedValue
@@ -66,5 +72,9 @@ public class FolderEntity implements Serializable {
 	}
 	public List<MessageEntity> getListOfMessages() {
 		return listOfMessages;
-	}	
+	}
+	
+	public String toString() {
+		return getFolderName();
+	}
 }

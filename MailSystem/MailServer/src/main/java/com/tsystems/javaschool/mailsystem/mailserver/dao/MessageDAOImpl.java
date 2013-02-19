@@ -3,15 +3,15 @@ package com.tsystems.javaschool.mailsystem.mailserver.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
+import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 import com.tsystems.javaschool.mailsystem.mailserver.server.Server;
-import com.tsystems.javaschool.mailsystem.shareableObjects.FolderEntity;
-import com.tsystems.javaschool.mailsystem.shareableObjects.MessageEntity;
 
 public class MessageDAOImpl implements MessageDAO {
 	
 	FolderDAO folderDAO = new FolderDAOImpl();
 	
-	public String send(MessageEntity message) {
+	public boolean send(MessageEntity message) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
@@ -30,17 +30,14 @@ public class MessageDAOImpl implements MessageDAO {
 		} finally {
 			if (trx.isActive()) {
 				trx.rollback();
-				em.close();
-				return "Message was not sent";
 			}
+			em.close();
 		}
-		
-		em.close();
 			
-		return "Message successfully sent";
+		return true;
 	}
 	
-	public String save(MessageEntity message) {
+	public boolean save(MessageEntity message) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
@@ -54,18 +51,30 @@ public class MessageDAOImpl implements MessageDAO {
 			trx.commit();
 		} finally {
 			if (trx.isActive()) {
-				trx.rollback(); 
-				em.close();
-				return "Message was not saved";
+				trx.rollback();
 			}
+			em.close();
 		}
-		
-		em.close();
 			
-		return "Message successfully saved";
+		return true;
 	}
 	
-	public String delete(MessageEntity message) {
-		return  "Message successfully deleted";
+	public boolean delete(MessageEntity message) {
+		
+		EntityManager em = Server.emf.createEntityManager();
+		EntityTransaction trx = em.getTransaction();
+
+		try {
+			trx.begin();
+			em.remove(message);
+			trx.commit();
+		} finally {
+			if (trx.isActive()) {
+				trx.rollback();
+			}
+			em.close();
+		}
+			
+		return true;
 	}
 }

@@ -1,11 +1,12 @@
 package com.tsystems.javaschool.mailsystem.clientservice;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
+import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
-import com.tsystems.javaschool.mailsystem.shareableObjects.FolderEntity;
+import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
 
 public class ClientFolderService {
@@ -17,55 +18,44 @@ public class ClientFolderService {
 		this.output = output;
 	}
 	
-	public String createFolder(FolderEntity folder) {
+	public ServerResponse createFolder(FolderEntity folder) {
 		try {
 			output.writeObject(new CommandAndDataObject(ToDo.CreateFolder, folder));
-		} catch (IOException e) {
-			return "Error in process of transfer folder from client to server: " + e.getMessage();		
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");	
 		}	
-		
-		try {
-			String response = (String) input.readObject();
-			return response;
-		} catch (ClassNotFoundException e) {
-			return "Cannot get response about new folder from server: " + e.getMessage();
-		} catch (IOException e) {
-			return "Error in process of geting response about new folder from server" + e.getMessage();
-		}
 	}
 	
-	public String deleteFolder(FolderEntity folder) {
+	public ServerResponse deleteFolder(FolderEntity folder) {
 		try {
 			output.writeObject(new CommandAndDataObject(ToDo.DeleteFolder, folder));
-		} catch (IOException e) {
-			return "Error in process of transfer folder from client to server: " + e.getMessage();		
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");	
 		}	
-		
-		try {
-			String response = (String) input.readObject();
-			return response;
-		} catch (ClassNotFoundException e) {
-			return "Cannot get response about deleted folder from server: " + e.getMessage();
-		} catch (IOException e) {
-			return "Error in process of geting response about deleted folder from server" + e.getMessage();
-		}
 	}
 	
-	public String renameFolder(FolderEntity folder) {
+	public ServerResponse renameFolder(FolderEntity folder) {
 		try {
 			output.writeObject(new CommandAndDataObject(ToDo.RenameFolder, folder));
-		} catch (IOException e) {
-			return "Error in process of transfer folder from client to server: " + e.getMessage();		
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");		
 		}	
-		
+	}
+	
+	public ServerResponse findFoldersForMailBox(MailBoxEntity mailBox) {
 		try {
-			String response = (String) input.readObject();
-			return response;
-		} catch (ClassNotFoundException e) {
-			return "Cannot get response about renamed folder from server: " + e.getMessage();
-		} catch (IOException e) {
-			return "Error in process of geting response about renamed folder from server" + e.getMessage();
-		}
+			output.writeObject(new CommandAndDataObject(ToDo.FindFoldersForMailBox, mailBox));
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");		
+		}	
 	}
 	
 }

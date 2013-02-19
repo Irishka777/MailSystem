@@ -1,6 +1,5 @@
 package com.tsystems.javaschool.mailsystem.mailserver.server;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -9,7 +8,6 @@ import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.LoginService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
-//import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
 
  /*
   * object ServerProcess creates for every server client
@@ -55,6 +53,7 @@ public class ServerProcess implements Runnable {
 					output.writeObject(loginService.registration(commandAndData.getData()));
 					break;
 				case Login:
+					output.writeObject(loginService.login(commandAndData.getData()));
 					break;
 				case GetMailBoxEntityByMailAddress:
 					output.writeObject(loginService.getMailBoxEntityByEmailAddress(commandAndData.getData()));
@@ -77,6 +76,9 @@ public class ServerProcess implements Runnable {
 				case RenameFolder:
 					output.writeObject(folderService.renameFolder(commandAndData.getData()));
 					break;
+				case FindFoldersForMailBox:
+					output.writeObject(folderService.findFoldersForMailBox(commandAndData.getData()));
+					break;
 				case MoveMessageToAnotherFolder:
 					break;
 				case Update:
@@ -84,8 +86,9 @@ public class ServerProcess implements Runnable {
 				case CloseSocket:
 					break closeSocket;
 				}
-			} catch (IOException e) {
-				System.out.println("IOException in process of comunication with client" + e.getMessage() + "closing socket");
+			} catch (Exception e) {
+				System.out.println("Exception in process of comunication with client " + e.getMessage() + " closing socket");
+				e.printStackTrace();
 				break closeSocket;
 			}
 		}
@@ -94,28 +97,29 @@ public class ServerProcess implements Runnable {
 	private boolean createInputAndOutputStreams() {
 		try {		
 			output = new ObjectOutputStream(clientSocket.getOutputStream());
-			input = new ObjectInputStream(clientSocket.getInputStream());					
-		} catch (IOException e) {
+			input = new ObjectInputStream(clientSocket.getInputStream());
+			return true;
+		} catch (Exception e) {
+			System.out.println("Exception in process of creating input and output streams");
 			e.printStackTrace();
 			return false;
-		}
-		
-		return testConnectionBetweenServerAndClient();
+		}	
+//		return testConnectionBetweenServerAndClient();
 	}
 	
-	private boolean testConnectionBetweenServerAndClient()
-	{
-		try {
-			output.writeObject("Connection set");
-			System.out.println((String) input.readObject());
-		} catch (ClassNotFoundException e) {
-			System.out.println("ClassNotFoundException: Class of a serialized object cannot be found");
-			e.printStackTrace();
-			return false;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+//	private boolean testConnectionBetweenServerAndClient()
+//	{
+//		try {
+//			output.writeObject("Connection set");
+//			System.out.println((String) input.readObject());
+//		} catch (ClassNotFoundException e) {
+//			System.out.println("ClassNotFoundException: Class of a serialized object cannot be found");
+//			e.printStackTrace();
+//			return false;
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//		return true;
+//	}
 }

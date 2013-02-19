@@ -1,74 +1,65 @@
 package com.tsystems.javaschool.mailsystem.mailserver.service;
 
+import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MessageDAO;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MessageDAOImpl;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
-import com.tsystems.javaschool.mailsystem.shareableObjects.MessageEntity;
+import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
 public class MessageService {
 	
 	MessageDAO messageDAO = new MessageDAOImpl();
 	
-	public String sendMessage(Object message) {
+	public ServerResponse sendMessage(Object message) {
 		
 		if (message instanceof MessageEntity) {
 			if (((MessageEntity) message).getReceiver() == null) {
-				return "Mail box with sush email address does not exist";
-			}			
-			return messageDAO.send((MessageEntity) message);
+				return new ServerResponse(true,false,null,"Mail box with sush email address does not exist");
+			}
+			try {
+				if (messageDAO.send((MessageEntity) message)) {
+					return new ServerResponse(false,false,"Message successfully sent",null);
+				}
+				return new ServerResponse(true, true, null, "System error, error in programe code");
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ServerResponse(true, true, null, "System error, program will be closed");
+			}		
 		}
-		System.out.println("Wrong type of object, MessageEntity required to send a message");
-		return "Wrong type of object, MessageEntity required to send a message";		
+		return new ServerResponse(true,true,null,
+				"Wrong type of object, MessageEntity required to send a message, error in programe code");		
 	}
 	
-	public String saveMessage(Object message) {
+	public ServerResponse saveMessage(Object message) {
 		
-		if (message instanceof MessageEntity) {			
-			return messageDAO.save((MessageEntity) message);
+		if (message instanceof MessageEntity) {
+			try {
+				if (messageDAO.save((MessageEntity) message)) {
+					return new ServerResponse(false,false,"Message successfully saved",null);
+				}
+				return new ServerResponse(true, true, null, "System error, error in programe code");
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ServerResponse(true, true, null, "System error, program will be closed");
+			}
 		}
-		System.out.println("Wrong type of object, MessageEntity required to save a message");
-		return "Wrong type of object, MessageEntity required to save a message";
-		
+		return new ServerResponse(true,true,null,
+				"Wrong type of object, MessageEntity required to save a message, error in programe code");	
 	}
 	
-	public String deleteMessage(Object message) {
+	public ServerResponse deleteMessage(Object message) {
 		
-		if (message instanceof MessageEntity) {			
-			return messageDAO.delete((MessageEntity) message);
+		if (message instanceof MessageEntity) {
+			try {
+				if (messageDAO.delete((MessageEntity) message)) {
+					return new ServerResponse(false,false,"Message successfully deleted",null);
+				}
+				return new ServerResponse(true, true, null, "System error, error in programe code");
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ServerResponse(true, true, null, "System error, program will be closed");
+			}
 		}
-		System.out.println("Wrong type of object, MessageEntity required to delete a message");
-		return "Wrong type of object, MessageEntity required to send a message";	
+		return new ServerResponse(true,true,null,"Wrong type of object, MessageEntity required to send a message, error in programe code");	
 	}
-	
-//	public boolean sendMessage(ObjectInputStream input) {
-//		try {
-//			MessageEntity message = (MessageEntity) input.readObject();
-//			if (message.getReceiver() == null) {
-//				return false;
-//			}
-//			
-//			messageDAO.insert(message);
-//			return true;
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//			return false;
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//	}
-//	
-//	public boolean deleteMessage(ObjectInputStream input) {
-//		try {
-//			MessageEntity message = (MessageEntity) input.readObject();
-//			System.out.println(message);
-//			return true;
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//			return false;
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return false;
-//		}		
-//	}
 }

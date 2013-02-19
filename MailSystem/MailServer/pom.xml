@@ -23,7 +23,7 @@
             <configuration>
               <archive>
                 <manifest>
-                  <mainClass>com.tsystems.javaschool.mailsystem.server.Server</mainClass>
+                  <mainClass>com.tsystems.javaschool.mailsystem.mailserver.server.Server</mainClass>
                 </manifest>
               </archive>
             </configuration>

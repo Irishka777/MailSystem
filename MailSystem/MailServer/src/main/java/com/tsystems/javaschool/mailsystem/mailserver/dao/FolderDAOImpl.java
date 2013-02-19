@@ -1,20 +1,18 @@
 package com.tsystems.javaschool.mailsystem.mailserver.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
+import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.mailserver.server.Server;
-import com.tsystems.javaschool.mailsystem.shareableObjects.FolderEntity;
-import com.tsystems.javaschool.mailsystem.shareableObjects.MailBoxEntity;
 
 public class FolderDAOImpl implements FolderDAO {
 	
-	public String insert(FolderEntity folder) {
-		
-		if (findByEmailAddressAndFolderName(folder.getFolderName(), folder.getEmailAddress()) != null) {
-			return "Folder with such a name already exists in this mail box";
-		}
+	public boolean insert(FolderEntity folder) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
@@ -27,13 +25,12 @@ public class FolderDAOImpl implements FolderDAO {
 			if (trx.isActive()) {
 				trx.rollback();
 			}
+			em.close();
 		}		
-		em.close();
-		
-		return "Folder successfully created";
+		return true;
 	}
 	
-	public String delete(FolderEntity folder) {
+	public boolean delete(FolderEntity folder) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
@@ -45,33 +42,43 @@ public class FolderDAOImpl implements FolderDAO {
 		} finally {
 			if (trx.isActive()) {
 				trx.rollback();
-				em.close();
-				return "Error in process of deleting folder";
 			}
-		}		
-		em.close();
-		return "Folder successfully deleted";
+			em.close();
+		}
+		return true;
 	}
 	
-	public String rename(FolderEntity folder) {
+	public boolean rename(FolderEntity folder) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
 		
 		try {
 			trx.begin();
-//			FolderEntity newFolder = em.find(FolderEntity.class, folder.getId());
 			em.merge(folder);
 			trx.commit();
 		} finally {
 			if (trx.isActive()) {
-				trx.rollback();
-				em.close();
-				return "Error in process of renaming folder";
+				trx.rollback();				
 			}
+			em.close();
 		}		
-		em.close();
-		return "Folder successfully renamed";
+		return true;
+	}
+	
+	public List<FolderEntity> findFoldersForMailBox(MailBoxEntity mailBox) {
+		
+		EntityManager em = Server.emf.createEntityManager();
+		
+		TypedQuery<FolderEntity> query = em.createNamedQuery("findFoldersForMailBox", FolderEntity.class);
+		query.setParameter("mailBox", mailBox);
+		List<FolderEntity> folder = null;
+		try {
+			folder = query.getResultList();
+		} finally {
+			em.close();
+		}		
+		return folder;
 	}
 	
 	public FolderEntity findByEmailAddressAndFolderName(String folderName, MailBoxEntity emailAddress) {
@@ -84,10 +91,9 @@ public class FolderDAOImpl implements FolderDAO {
 		FolderEntity folder = null;
 		try {
 			folder = query.getSingleResult();
-		} catch (javax.persistence.NoResultException e) {}
-		
-		em.close();
-		
+		} finally {
+			em.close();
+		}		
 		return folder;
 	}
 }

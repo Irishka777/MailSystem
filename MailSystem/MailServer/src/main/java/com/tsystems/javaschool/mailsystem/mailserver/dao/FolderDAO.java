@@ -1,11 +1,14 @@
 package com.tsystems.javaschool.mailsystem.mailserver.dao;
 
-import com.tsystems.javaschool.mailsystem.shareableObjects.FolderEntity;
-import com.tsystems.javaschool.mailsystem.shareableObjects.MailBoxEntity;
+import java.util.List;
+
+import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
+import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 
 public interface FolderDAO {
-	public String insert(FolderEntity folder);
-	public String delete(FolderEntity folder);
-	public String rename(FolderEntity folder);
+	public boolean insert(FolderEntity folder);
+	public boolean delete(FolderEntity folder);
+	public boolean rename(FolderEntity folder);
 	public FolderEntity findByEmailAddressAndFolderName(String folderName, MailBoxEntity emailAddress);
+	public List<FolderEntity> findFoldersForMailBox(MailBoxEntity mailBox);
 }

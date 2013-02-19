@@ -1,4 +1,4 @@
-package com.tsystems.javaschool.mailsystem.shareableObjects;
+package com.tsystems.javaschool.mailsystem.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @SuppressWarnings("serial")
 @Entity

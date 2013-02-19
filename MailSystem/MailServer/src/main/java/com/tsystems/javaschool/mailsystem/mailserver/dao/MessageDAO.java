@@ -1,9 +1,9 @@
 package com.tsystems.javaschool.mailsystem.mailserver.dao;
 
-import com.tsystems.javaschool.mailsystem.shareableObjects.MessageEntity;
+import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 
 public interface MessageDAO {
-	public String send(MessageEntity message);
-	public String save(MessageEntity message);
-	public String delete(MessageEntity message);
+	public boolean send(MessageEntity message);
+	public boolean save(MessageEntity message);
+	public boolean delete(MessageEntity message);
 }
