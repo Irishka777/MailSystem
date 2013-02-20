@@ -71,6 +71,6 @@ public class FolderService {
 			}
 		}
 		return new ServerResponse(true,true, null,
-				"Wrong type of object, FolderEntity required to rename a folder, error in programe code");
+				"Wrong type of object, MailBox required to get mail box folders, error in programe code");
 	}
 }

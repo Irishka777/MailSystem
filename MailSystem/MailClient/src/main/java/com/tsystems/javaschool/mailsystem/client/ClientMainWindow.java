@@ -33,13 +33,14 @@ import java.awt.event.WindowEvent;
 import java.awt.Font;
 import java.util.List;
 
-public class ClientMainWindow {
+public class ClientMainWindow extends JFrame{
 
 	private ClientProcess clientProcess;
 	
-	private JFrame mailClientFrame;
+	private ClientMainWindow mainWindow;
 	private JTree foldersTree;
 	private JTable messagesTable;
+	JTextArea messageBodyTextArea;
 	
 	private ClientLoginWindow loginWindow;
 	private ClientNewMessageWindow newMessageWindow;
@@ -52,9 +53,8 @@ public class ClientMainWindow {
 			public void run() {
 				try {
 					ClientMainWindow window = new ClientMainWindow();
-					window.mailClientFrame.pack();
-					window.mailClientFrame.setLocationRelativeTo(null); // the window is centered on screen
-					window.mailClientFrame.setVisible(true);
+					window.setLocationRelativeTo(null); // the window is centered on screen
+					window.mainWindow.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,27 +68,37 @@ public class ClientMainWindow {
 	public ClientMainWindow() {
 		initialize();
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		mailClientFrame = new JFrame();
-		mailClientFrame.addWindowListener(new WindowAdapter() {
+		
+		mainWindow = this;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Mail client");
+		setContentPane(createFoldersAndMessagesSplitPane());
+		pack();	
+		
+		addWindowListener(new WindowAdapter() {
 			public void windowOpened(WindowEvent arg0) {
 				clientProcess = new ClientProcess();
 				if (!clientProcess.startClient()) {
-					JOptionPane.showMessageDialog(mailClientFrame,"Cannot get connection to server",
+					JOptionPane.showMessageDialog(mainWindow,"Cannot get connection to server",
 							"Error",JOptionPane.ERROR_MESSAGE);
-					mailClientFrame.dispose();
+					mainWindow.dispose();
 					return;
 				}
-				loginWindow = new ClientLoginWindow(clientProcess);
-				loginWindow.setLocationRelativeTo(mailClientFrame);
+				loginWindow = new ClientLoginWindow(mainWindow);
+				loginWindow.setLocationRelativeTo(mainWindow); // the window is centered on screen
 				loginWindow.setVisible(true);
 				
+				if (!mainWindow.isDisplayable()) {
+					return;
+				}
 				if (!fillFoldersTreeWithFolders()) {
-					mailClientFrame.dispose();
+					clientProcess.stopClient();
+					mainWindow.dispose();
 				}
 				
 			}
@@ -96,25 +106,42 @@ public class ClientMainWindow {
 				clientProcess.stopClient();
 			}
 		});
-		mailClientFrame.setTitle("Mail client");
-		mailClientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		newMessageWindow = new ClientNewMessageWindow(clientProcess);
-		
-		JSplitPane foldersAndMessagesSplitPane = new JSplitPane();
+	}
+	
+	private JSplitPane createFoldersAndMessagesSplitPane() {
+		JSplitPane foldersAndMessagesSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,createFoldersPanel(),
+				createMessageSplitPane());
 		foldersAndMessagesSplitPane.setResizeWeight(0.5);
 		foldersAndMessagesSplitPane.setOneTouchExpandable(true);
-		mailClientFrame.getContentPane().add(foldersAndMessagesSplitPane, BorderLayout.CENTER);
+		return foldersAndMessagesSplitPane;
+	}
+	
+	private JPanel createFoldersPanel() {
 		
 		JPanel foldersPanel = new JPanel();
-		foldersAndMessagesSplitPane.setLeftComponent(foldersPanel);
 		foldersPanel.setLayout(new BorderLayout(0, 0));
+		foldersPanel.add(createFoldersTreeScrollPane(), BorderLayout.CENTER);		
+		foldersPanel.add(createFolderButtonsPanel(), BorderLayout.SOUTH);
 		
-		JScrollPane foldersTreeScrollPane = new JScrollPane();
-		foldersPanel.add(foldersTreeScrollPane, BorderLayout.CENTER);
+		return foldersPanel;
+	}
+	
+	private JScrollPane createFoldersTreeScrollPane() {
 		
-		foldersTree = new JTree();
+		// creates foldersTree root element
+		DefaultMutableTreeNode messages = new DefaultMutableTreeNode("Messages");
+		
+		// creates foldersTree, sets root element and properties
+		foldersTree = new JTree(messages);
 		foldersTree.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		foldersTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		
+		// sets folder icon for list nodes
+		DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
+		renderer.setLeafIcon(renderer.getDefaultClosedIcon());
+		foldersTree.setCellRenderer(renderer);
+		
+		// adds TreeSelectionListener
 		foldersTree.addTreeSelectionListener(new TreeSelectionListener() {
 			public void valueChanged(TreeSelectionEvent arg0) {
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent();
@@ -134,20 +161,10 @@ public class ClientMainWindow {
 			}
 		});
 		
-		DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-		renderer.setLeafIcon(renderer.getDefaultClosedIcon());
-		foldersTree.setCellRenderer(renderer);
-		
-		foldersTree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Messages") {
-				{
-				}
-			}
-		));
-		foldersTreeScrollPane.setViewportView(foldersTree);
-		
-		JPanel folderButtonsPanel = new JPanel();
-		foldersPanel.add(folderButtonsPanel, BorderLayout.SOUTH);
+		return new JScrollPane(foldersTree);
+	}
+	
+	private JPanel createFolderButtonsPanel() {
 		
 		JButton createFolderButton = new JButton("Create folder");
 		createFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
@@ -161,6 +178,7 @@ public class ClientMainWindow {
 		renameFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		renameFolderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		
@@ -168,64 +186,80 @@ public class ClientMainWindow {
 		deleteFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		deleteFolderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
+		
+		JPanel folderButtonsPanel = new JPanel();
 		folderButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		folderButtonsPanel.add(createFolderButton);
 		folderButtonsPanel.add(renameFolderButton);
 		folderButtonsPanel.add(deleteFolderButton);
 		
-		JSplitPane messagesSplitPane = new JSplitPane();
+		return folderButtonsPanel;
+	}
+
+	private JSplitPane createMessageSplitPane() {
+	
+		JSplitPane messagesSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+				createMessagesPanel(),createMessageBodyScrollPane());
 		messagesSplitPane.setResizeWeight(0.5);
-		messagesSplitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-		foldersAndMessagesSplitPane.setRightComponent(messagesSplitPane);
 		
-		JPanel messagesPanel = new JPanel();
-		messagesSplitPane.setLeftComponent(messagesPanel);
-		messagesPanel.setLayout(new BorderLayout(0, 0));
+		return messagesSplitPane;
+	}
+	
+	private JPanel createMessagesPanel() {
 		
-		JScrollPane messugesScrollPane = new JScrollPane();
-		messagesPanel.add(messugesScrollPane, BorderLayout.CENTER);
-		
+		// creates messages table and sets it into scroll pane
 		messagesTable = new JTable();
-		messagesTable.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
-		messugesScrollPane.setViewportView(messagesTable);
-		
-		JPanel messageButtonsPanel = new JPanel();
-		messagesPanel.add(messageButtonsPanel, BorderLayout.SOUTH);
+		messagesTable.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));	
+		JScrollPane messugesScrollPane = new JScrollPane(messagesTable);
 		
 		JButton createMessageButton = new JButton("Create message");
 		createMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		createMessageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				newMessageWindow.setLocationRelativeTo(mailClientFrame);
+				newMessageWindow = new ClientNewMessageWindow(mainWindow);
+				newMessageWindow.setLocationRelativeTo(mainWindow); // the window is centered on screen
 				newMessageWindow.setVisible(true);
 			}
 		});
-		messageButtonsPanel.add(createMessageButton);
 		
 		JButton deleteMessageButton = new JButton("Delete message");
 		deleteMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		deleteMessageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
+		
+		JPanel messageButtonsPanel = new JPanel();
+		messageButtonsPanel.add(createMessageButton);
 		messageButtonsPanel.add(deleteMessageButton);
 		
-		JScrollPane messageBodyScrollPane = new JScrollPane();
-		messagesSplitPane.setRightComponent(messageBodyScrollPane);
+		JPanel messagesPanel = new JPanel();
+		messagesPanel.setLayout(new BorderLayout(0, 0));
+		messagesPanel.add(messugesScrollPane, BorderLayout.CENTER);
+		messagesPanel.add(messageButtonsPanel, BorderLayout.SOUTH);
 		
-		JTextArea messageBodyTextArea = new JTextArea();
+		return messagesPanel;
+	}
+	
+	private JScrollPane createMessageBodyScrollPane() {
+		
+		messageBodyTextArea = new JTextArea();
 		messageBodyTextArea.setFont(new Font("Arial", Font.PLAIN, 14));
 		messageBodyTextArea.setEditable(false);
-		messageBodyScrollPane.setViewportView(messageBodyTextArea);
+		messageBodyTextArea.setLineWrap(true);
+		
+		return new JScrollPane(messageBodyTextArea);
 	}
 	
 	private boolean fillFoldersTreeWithFolders() {
 		ServerResponse response = clientProcess.getClientFolderService()
 				.findFoldersForMailBox(clientProcess.getUserMailBox());
 		if (response.isException()) {
-			JOptionPane.showMessageDialog(mailClientFrame,response.getExceptionMessage(),
+			JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
 					"Error",JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -239,5 +273,8 @@ public class ClientMainWindow {
 		foldersTree.expandRow(0);
 		return true;
 	}
-
+	
+	public ClientProcess getClientProcess() {
+		return clientProcess;
+	}
 }

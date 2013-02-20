@@ -1,19 +1,18 @@
 package com.tsystems.javaschool.mailsystem.client;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -25,9 +24,10 @@ import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.Component;
 
 public class ClientNewMessageWindow extends JDialog {
+	
+	private ClientMainWindow mainWindow;
 	private JTextField receiverTextField;
 	private JTextField themeTextField;
 	private JTextArea messageBodyTextArea;
@@ -35,88 +35,107 @@ public class ClientNewMessageWindow extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ClientNewMessageWindow(final ClientProcess clientProcess) {
+	public ClientNewMessageWindow(ClientMainWindow clientMainWindow) {
+		
+		mainWindow = clientMainWindow;
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setFont(new Font("Dialog", Font.PLAIN, 12));
+		setTitle("Create a new message");
+		setBounds(100, 100, 600, 600);
+		
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		getContentPane().add(createMessageDataPanel(), BorderLayout.CENTER);
+		getContentPane().add(createButtonsPanel(), BorderLayout.SOUTH);
+		
 		addWindowListener(new WindowAdapter() {
-			@Override
 			public void windowClosing(WindowEvent arg0) {
 				
 			}
 		});
-		setTitle("Create a new message");
-		setBounds(100, 100, 600, 600);
-		
-		JPanel messagePanel = new JPanel();
-		getContentPane().add(messagePanel, BorderLayout.CENTER);
-		messagePanel.setLayout(new BorderLayout(0, 0));
+	}
+	
+	private  JPanel createMessageDataPanel() {
 		
 		JPanel messageDataPanel = new JPanel();
-		messageDataPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		messagePanel.add(messageDataPanel, BorderLayout.CENTER);
 		messageDataPanel.setLayout(new BorderLayout(0, 5));
+		messageDataPanel.add(createReceiverAndThemePanel(), BorderLayout.NORTH);
+		messageDataPanel.add(createMessageBodyPanel(), BorderLayout.CENTER);
 		
-		JPanel messageReseiverAndThemePanel = new JPanel();
-		messageDataPanel.add(messageReseiverAndThemePanel, BorderLayout.NORTH);
-		messageReseiverAndThemePanel.setLayout(new GridLayout(0, 1, 0, 5));
+		return messageDataPanel;
+	}
+
+	private JPanel createReceiverAndThemePanel() {
 		
-		JPanel receiverPanel = new JPanel();
-		messageReseiverAndThemePanel.add(receiverPanel);
-		receiverPanel.setLayout(new BorderLayout(5, 0));
+		JPanel receiverAndThemePanel = new JPanel();
+		receiverAndThemePanel.setLayout(new GridLayout(0, 1, 0, 5));
+		receiverAndThemePanel.add(createReceiverPanel());
+		receiverAndThemePanel.add(createThemePanel());
 		
-		JLabel receiverLabel = new JLabel("Receiver:");
-		receiverLabel.setForeground(Color.BLACK);
-		receiverLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
-		receiverPanel.add(receiverLabel, BorderLayout.WEST);
-		receiverLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		receiverLabel.setPreferredSize(new Dimension(100,30));
+		return receiverAndThemePanel;
+	}
+
+	private JPanel createReceiverPanel() {
 		
 		receiverTextField = new JTextField();
 		receiverTextField.setFont(new Font("Arial", Font.PLAIN, 14));
-		receiverLabel.setLabelFor(receiverTextField);
-		receiverPanel.add(receiverTextField);
 		receiverTextField.setColumns(10);
 		
-		JPanel themePanel = new JPanel();
-		messageReseiverAndThemePanel.add(themePanel);
-		themePanel.setLayout(new BorderLayout(5, 0));
+		JLabel receiverLabel = new JLabel("Receiver:");
+		receiverLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));		
+		receiverLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		receiverLabel.setPreferredSize(new Dimension(100,30));
+		receiverLabel.setLabelFor(receiverTextField);
+
+		JPanel receiverPanel = new JPanel();
+		receiverPanel.setLayout(new BorderLayout(5, 0));
+		receiverPanel.add(receiverLabel, BorderLayout.WEST);
+		receiverPanel.add(receiverTextField, BorderLayout.CENTER);
 		
-		JLabel themeLabel = new JLabel("Theme:");
-		themeLabel.setForeground(Color.BLACK);
-		themeLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
-		themePanel.add(themeLabel, BorderLayout.WEST);
-		themeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		themeLabel.setPreferredSize(new Dimension(100,30));
+		return receiverPanel;
+	}
+	
+	private JPanel createThemePanel() {
 		
 		themeTextField = new JTextField();
 		themeTextField.setFont(new Font("Arial", Font.PLAIN, 14));
-		themeLabel.setLabelFor(themeTextField);
-		themePanel.add(themeTextField);
 		themeTextField.setColumns(10);
 		
-		JPanel messageBodyPanel = new JPanel();
-		messageDataPanel.add(messageBodyPanel);
-		messageBodyPanel.setLayout(new BorderLayout(5, 0));
+		JLabel themeLabel = new JLabel("Theme:");
+		themeLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
+		themeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		themeLabel.setPreferredSize(new Dimension(100,30));
+		themeLabel.setLabelFor(themeTextField);
 		
-		JLabel messageLabel = new JLabel("Message:");
-		messageLabel.setForeground(Color.BLACK);
-		messageLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
-		messageBodyPanel.add(messageLabel, BorderLayout.WEST);
-		messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		messageLabel.setPreferredSize(new Dimension(100,30));
+		JPanel themePanel = new JPanel();
+		themePanel.setLayout(new BorderLayout(5, 0));
+		themePanel.add(themeLabel, BorderLayout.WEST);
+		themePanel.add(themeTextField, BorderLayout.CENTER);
 		
-		JScrollPane messageBodyScrollPane = new JScrollPane();
-		messageLabel.setLabelFor(messageBodyScrollPane);
-		messageBodyPanel.add(messageBodyScrollPane);
-		
+		return themePanel;
+	}	
+	
+	private JPanel createMessageBodyPanel() {
+
 		messageBodyTextArea = new JTextArea();
-		messageBodyTextArea.setLineWrap(true);
 		messageBodyTextArea.setFont(new Font("Arial", Font.PLAIN, 14));
-		messageBodyScrollPane.setViewportView(messageBodyTextArea);
+		messageBodyTextArea.setLineWrap(true);
+		JScrollPane messageBodyScrollPane = new JScrollPane(messageBodyTextArea);		
 		
-		JPanel messageButtonsPanel = new JPanel();
-		messagePanel.add(messageButtonsPanel, BorderLayout.SOUTH);
+		JLabel messageBodyLabel = new JLabel("Message:");
+		messageBodyLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
+		messageBodyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		messageBodyLabel.setPreferredSize(new Dimension(100,30));
+		messageBodyLabel.setLabelFor(messageBodyScrollPane);
+		
+		JPanel messageBodyPanel = new JPanel();
+		messageBodyPanel.setLayout(new BorderLayout(5, 0));
+		messageBodyPanel.add(messageBodyLabel, BorderLayout.WEST);
+		messageBodyPanel.add(messageBodyScrollPane, BorderLayout.CENTER);
+		
+		return messageBodyPanel;
+	}
+	
+	private JPanel createButtonsPanel() {
 		
 		JButton sendMessageButton = new JButton("Send message");
 		sendMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
@@ -134,7 +153,6 @@ public class ClientNewMessageWindow extends JDialog {
 //				sendMessageActionPerformed(arg0,clientProcess);
 			}
 		});
-		messageButtonsPanel.add(sendMessageButton);
 		
 		JButton saveMessageButton = new JButton("Save message");
 		saveMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
@@ -142,7 +160,6 @@ public class ClientNewMessageWindow extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		messageButtonsPanel.add(saveMessageButton);
 		
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
@@ -150,7 +167,13 @@ public class ClientNewMessageWindow extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		messageButtonsPanel.add(cancelButton);
+		
+		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.add(sendMessageButton);
+		buttonsPanel.add(saveMessageButton);
+		buttonsPanel.add(cancelButton);
+		
+		return buttonsPanel;
 	}
 	
 	private void sendMessageActionPerformed(ActionEvent arg0, ClientProcess clientProcess) {
@@ -164,5 +187,4 @@ public class ClientNewMessageWindow extends JDialog {
 			dispose();
 		}
 	}
-
 }

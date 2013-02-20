@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
-import com.tsystems.javaschool.mailsystem.mailserver.service.LoginService;
+import com.tsystems.javaschool.mailsystem.mailserver.service.MailBoxService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 
 public class Server {
@@ -24,7 +24,7 @@ public class Server {
 	
 	private MessageService messageService = new MessageService();
 	private FolderService folderService = new FolderService();
-	private LoginService loginService = new LoginService();
+	private MailBoxService loginService = new MailBoxService();
 	
 	public Server() {
 		port = 9090;

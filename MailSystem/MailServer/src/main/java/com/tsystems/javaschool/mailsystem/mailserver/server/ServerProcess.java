@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
-import com.tsystems.javaschool.mailsystem.mailserver.service.LoginService;
+import com.tsystems.javaschool.mailsystem.mailserver.service.MailBoxService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
 
@@ -21,10 +21,10 @@ public class ServerProcess implements Runnable {
 	
 	private MessageService messageService = null;
 	private FolderService folderService = null;
-	private LoginService loginService = null;
+	private MailBoxService loginService = null;
 	
 	public ServerProcess(Socket clientSocket, MessageService messageService,
-			FolderService folderService, LoginService loginService) {
+			FolderService folderService, MailBoxService loginService) {
 		this.clientSocket = clientSocket;
 		this.messageService = messageService;
 		this.folderService = folderService;

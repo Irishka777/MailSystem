@@ -8,7 +8,7 @@ import com.tsystems.javaschool.mailsystem.mailserver.dao.MailBoxDAO;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MailBoxDAOImpl;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
-public class LoginService {
+public class MailBoxService {
 	private MailBoxDAO mailBoxDAO = new MailBoxDAOImpl();
 	
 	public ServerResponse login(Object neededMailBox) {
