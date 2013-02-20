@@ -56,11 +56,13 @@ public class MailBoxService {
 		
 		if (emailAddress instanceof String) {
 			try {
-				MailBoxEntity mailBox = mailBoxDAO.findByEmailAddress((String) emailAddress);
+				MailBoxEntity mailBox = mailBoxDAO.findByEmailAddress(((String) emailAddress).toLowerCase());
 				return new ServerResponse(false,false,mailBox,null);
+			} catch (NoResultException e) {
+				return new ServerResponse(true,false,null,"There is no such email address");
 			} catch (Exception e) {
 				e.printStackTrace();
-				return new ServerResponse(true,false,null,"There is no such email address");
+				return new ServerResponse(true,true,null,"System error, program will be closed");
 			}			
 		}
 		return new ServerResponse(true,true, null,

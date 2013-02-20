@@ -66,7 +66,7 @@ public class MessageDAOImpl implements MessageDAO {
 
 		try {
 			trx.begin();
-			em.remove(message);
+			em.remove(em.merge(message));
 			trx.commit();
 		} finally {
 			if (trx.isActive()) {

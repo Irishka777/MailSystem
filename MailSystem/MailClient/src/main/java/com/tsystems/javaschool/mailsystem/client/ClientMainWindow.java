@@ -13,16 +13,20 @@ import javax.swing.JButton;
 import javax.swing.JTree;
 import javax.swing.JTextArea;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
 import java.awt.FlowLayout;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
+import com.tsystems.javaschool.mailsystem.models.MessagesTableModel;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
 import java.awt.event.ActionListener;
@@ -33,6 +37,7 @@ import java.awt.event.WindowEvent;
 import java.awt.Font;
 import java.util.List;
 
+@SuppressWarnings("serial")
 public class ClientMainWindow extends JFrame{
 
 	private ClientProcess clientProcess;
@@ -53,8 +58,10 @@ public class ClientMainWindow extends JFrame{
 			public void run() {
 				try {
 					ClientMainWindow window = new ClientMainWindow();
-					window.setLocationRelativeTo(null); // the window is centered on screen
-					window.mainWindow.setVisible(true);
+					if (window.isDisplayable()) {
+						window.setLocationRelativeTo(null);  // the window is centered on screen
+						window.mainWindow.setVisible(true);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,7 +73,13 @@ public class ClientMainWindow extends JFrame{
 	 * Create the application.
 	 */
 	public ClientMainWindow() {
-		initialize();
+		clientProcess = new ClientProcess();
+		if (!clientProcess.startClient()) {
+			JOptionPane.showMessageDialog(mainWindow,"Cannot get connection to server",
+					"Error",JOptionPane.ERROR_MESSAGE);
+		} else {
+			initialize();
+		}
 	}
 	
 	/**
@@ -82,13 +95,7 @@ public class ClientMainWindow extends JFrame{
 		
 		addWindowListener(new WindowAdapter() {
 			public void windowOpened(WindowEvent arg0) {
-				clientProcess = new ClientProcess();
-				if (!clientProcess.startClient()) {
-					JOptionPane.showMessageDialog(mainWindow,"Cannot get connection to server",
-							"Error",JOptionPane.ERROR_MESSAGE);
-					mainWindow.dispose();
-					return;
-				}
+				
 				loginWindow = new ClientLoginWindow(mainWindow);
 				loginWindow.setLocationRelativeTo(mainWindow); // the window is centered on screen
 				loginWindow.setVisible(true);
@@ -151,9 +158,10 @@ public class ClientMainWindow extends JFrame{
 					return;
 				}
 				if (node.isLeaf()) {
-//					FolderEntity folder = (FolderEntity)node.getUserObject();
-//					folder.getListOfMessages();
-					// show messages in this folder in the right table
+					FolderEntity folder = (FolderEntity)node.getUserObject();
+					messageBodyTextArea.setText(null);
+					((MessagesTableModel) messagesTable.getModel()).setListOfMessages(folder.getListOfMessages());
+					((MessagesTableModel) messagesTable.getModel()).fireTableDataChanged();
 				}
 				else {
 					// show empty table
@@ -208,11 +216,25 @@ public class ClientMainWindow extends JFrame{
 		return messagesSplitPane;
 	}
 	
-	private JPanel createMessagesPanel() {
+	private JPanel createMessagesPanel() {	
+		// creates messages table and sets it into scroll pane		
+		messagesTable = new JTable(new MessagesTableModel());
+		messagesTable.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
+		messagesTable.setShowVerticalLines(false);
+		messagesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		messagesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if (messagesTable.getSelectedRow() == -1) {
+					return;
+				}
+				messageBodyTextArea.setText(((MessagesTableModel)messagesTable.getModel())
+						.getMessageBody(messagesTable.getSelectedRow()));
+			}
+		});
+//		///??????????????
+//		messagesTable.setFillsViewportHeight(true); // ?????
+//		///???????????
 		
-		// creates messages table and sets it into scroll pane
-		messagesTable = new JTable();
-		messagesTable.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));	
 		JScrollPane messugesScrollPane = new JScrollPane(messagesTable);
 		
 		JButton createMessageButton = new JButton("Create message");
@@ -228,8 +250,8 @@ public class ClientMainWindow extends JFrame{
 		JButton deleteMessageButton = new JButton("Delete message");
 		deleteMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		deleteMessageButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
+			public void actionPerformed(ActionEvent e) {
+				deleteMessageActionPerformed(e);
 			}
 		});
 		
@@ -245,8 +267,7 @@ public class ClientMainWindow extends JFrame{
 		return messagesPanel;
 	}
 	
-	private JScrollPane createMessageBodyScrollPane() {
-		
+	private JScrollPane createMessageBodyScrollPane() {	
 		messageBodyTextArea = new JTextArea();
 		messageBodyTextArea.setFont(new Font("Arial", Font.PLAIN, 14));
 		messageBodyTextArea.setEditable(false);
@@ -255,6 +276,7 @@ public class ClientMainWindow extends JFrame{
 		return new JScrollPane(messageBodyTextArea);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private boolean fillFoldersTreeWithFolders() {
 		ServerResponse response = clientProcess.getClientFolderService()
 				.findFoldersForMailBox(clientProcess.getUserMailBox());
@@ -264,7 +286,7 @@ public class ClientMainWindow extends JFrame{
 			return false;
 		}
 		
-		List<FolderEntity> foldersList = (List<FolderEntity>)response.getResult();
+		List<FolderEntity> foldersList = (List<FolderEntity>) response.getResult();
 		DefaultMutableTreeNode parent = (DefaultMutableTreeNode)foldersTree.getPathForLocation(0, 0)
 				.getLastPathComponent();
 		for (FolderEntity folder:foldersList) {
@@ -272,6 +294,35 @@ public class ClientMainWindow extends JFrame{
 		}
 		foldersTree.expandRow(0);
 		return true;
+	}
+	
+	private void deleteMessageActionPerformed(ActionEvent e) {
+		int row = messagesTable.getSelectedRow();
+		if (row == -1) {
+			JOptionPane.showMessageDialog(mainWindow,"You should select a message for deletion at first",
+					"Error",JOptionPane.ERROR_MESSAGE);
+		} else {
+			int n = JOptionPane.showConfirmDialog(mainWindow,"Are you sure you want to delete selected message?",
+				    "Question",JOptionPane.OK_CANCEL_OPTION);
+			if (n == JOptionPane.OK_OPTION) {
+				ServerResponse response = getClientProcess().getClientMessageService()
+					.deleteMessage(((MessagesTableModel)messagesTable.getModel()).getMessageAt(row));
+				if (response.isError()) {
+					JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+							"Error",JOptionPane.ERROR_MESSAGE);
+					getClientProcess().stopClient();
+					dispose();
+				} else {
+					if (response.isException()) {
+						JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+								"Error",JOptionPane.ERROR_MESSAGE);
+					} else {
+						((MessagesTableModel)messagesTable.getModel()).deleteMessageAt(row);
+						((MessagesTableModel) messagesTable.getModel()).fireTableDataChanged();
+					}
+				}				
+			}
+		}
 	}
 	
 	public ClientProcess getClientProcess() {

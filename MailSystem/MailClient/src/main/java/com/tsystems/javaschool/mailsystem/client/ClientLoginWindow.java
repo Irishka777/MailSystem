@@ -3,7 +3,6 @@ package com.tsystems.javaschool.mailsystem.client;
 import javax.swing.JDialog;
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,12 +19,12 @@ import javax.swing.border.EmptyBorder;
 import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+@SuppressWarnings("serial")
 public class ClientLoginWindow extends JDialog {
 	
 	private final ClientMainWindow mainWindow;

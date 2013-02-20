@@ -35,7 +35,7 @@ public class MessageService {
 		if (message instanceof MessageEntity) {
 			try {
 				if (messageDAO.save((MessageEntity) message)) {
-					return new ServerResponse(false,false,"Message successfully saved",null);
+					return new ServerResponse(false,false,"Message successfully saved in draft messages",null);
 				}
 				return new ServerResponse(true, true, null, "System error, error in programe code");
 			} catch (Exception e) {

@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -17,17 +18,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.border.EmptyBorder;
 
+import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
 import java.awt.Font;
-import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class ClientNewMessageWindow extends JDialog {
 	
 	private ClientMainWindow mainWindow;
+	private ClientNewMessageWindow newMessageWindow;
 	private JTextField receiverTextField;
 	private JTextField themeTextField;
 	private JTextArea messageBodyTextArea;
@@ -36,7 +38,7 @@ public class ClientNewMessageWindow extends JDialog {
 	 * Create the dialog.
 	 */
 	public ClientNewMessageWindow(ClientMainWindow clientMainWindow) {
-		
+		newMessageWindow = this;
 		mainWindow = clientMainWindow;
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -140,31 +142,23 @@ public class ClientNewMessageWindow extends JDialog {
 		JButton sendMessageButton = new JButton("Send message");
 		sendMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		sendMessageButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-//				ServerResponse response = clientProcess.getClientMessageService().createMessage
-//						(clientProcess.getUserMailBox(),receiverTextField.getText() ,
-//								themeTextField.getText(),messageBodyTextArea.getText());
-//				if (response.isException()) {
-//					response.getExceptionMessage();
-//				} else {
-//					clientProcess.getClientMessageService().sendMessage((MessageEntity)response.getResult());
-//					dispose();
-//				}
-//				sendMessageActionPerformed(arg0,clientProcess);
+			public void actionPerformed(ActionEvent e) {
+				sendMessageActionPerformed(e);
 			}
 		});
 		
 		JButton saveMessageButton = new JButton("Save message");
 		saveMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		saveMessageButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				saveMessageActionPerformed(e);
 			}
 		});
 		
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		cancelButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
@@ -176,15 +170,84 @@ public class ClientNewMessageWindow extends JDialog {
 		return buttonsPanel;
 	}
 	
-	private void sendMessageActionPerformed(ActionEvent arg0, ClientProcess clientProcess) {
-		ServerResponse response = clientProcess.getClientMessageService().createMessage
-				(clientProcess.getUserMailBox(),this.receiverTextField.getText() ,
-						this.themeTextField.getText(),this.messageBodyTextArea.getText());
-		if (response.isException()) {
-			response.getExceptionMessage();
-		} else {
-			clientProcess.getClientMessageService().sendMessage((MessageEntity)response.getResult());
+	private void sendMessageActionPerformed(ActionEvent e) {
+		
+		MailBoxEntity senderMailBox = mainWindow.getClientProcess().getUserMailBox();
+		ServerResponse response = mainWindow.getClientProcess().getClientMessageService()
+				.createMessage(senderMailBox, receiverTextField.getText(), themeTextField.getText()
+						, messageBodyTextArea.getText());
+		
+		if (response.isError()) {
+			JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+					"Error",JOptionPane.ERROR_MESSAGE);
+			mainWindow.getClientProcess().stopClient();
+			mainWindow.dispose();
 			dispose();
+		} else {
+			if (response.isException()) {
+				JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+						"Error",JOptionPane.ERROR_MESSAGE);
+			} else {
+				response = mainWindow.getClientProcess().getClientMessageService().sendMessage((MessageEntity) response.getResult());
+				
+				if (response.isError()) {
+					JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+							"Error",JOptionPane.ERROR_MESSAGE);
+					mainWindow.getClientProcess().stopClient();
+					mainWindow.dispose();
+					dispose();
+				} else {
+					if (response.isException()) {
+						JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+								"Error",JOptionPane.ERROR_MESSAGE);
+					} else {
+						dispose();
+						JOptionPane.showMessageDialog(newMessageWindow,response.getResult(),
+								"Information",JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+			}
+		}
+	}
+	
+private void saveMessageActionPerformed(ActionEvent e) {
+		
+		MailBoxEntity senderMailBox = mainWindow.getClientProcess().getUserMailBox();
+		ServerResponse response = mainWindow.getClientProcess().getClientMessageService()
+				.createMessage(senderMailBox, receiverTextField.getText(), themeTextField.getText()
+						, messageBodyTextArea.getText());
+		
+		if (response.isError()) {
+			JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+					"Error",JOptionPane.ERROR_MESSAGE);
+			mainWindow.getClientProcess().stopClient();
+			mainWindow.dispose();
+			dispose();
+		} else {
+			if (response.isException()) {
+				JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+						"Information",JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+			response = mainWindow.getClientProcess().getClientMessageService().saveMessage((MessageEntity) response.getResult());
+			
+			if (response.isError()) {
+				JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+						"Error",JOptionPane.ERROR_MESSAGE);
+				mainWindow.getClientProcess().stopClient();
+				mainWindow.dispose();
+				dispose();
+			} else {
+				if (response.isException()) {
+					JOptionPane.showMessageDialog(newMessageWindow,response.getExceptionMessage(),
+							"Error",JOptionPane.ERROR_MESSAGE);
+				} else {
+					dispose();
+					JOptionPane.showMessageDialog(mainWindow,response.getResult(),
+							"Information",JOptionPane.INFORMATION_MESSAGE);
+					
+				}
+			}
 		}
 	}
 }

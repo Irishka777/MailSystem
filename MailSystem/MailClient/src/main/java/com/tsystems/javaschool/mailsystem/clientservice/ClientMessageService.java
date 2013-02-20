@@ -21,11 +21,14 @@ public class ClientMessageService {
 	public ServerResponse createMessage(MailBoxEntity sender, String receiver, String theme, String messageBody) {
 		
 		try {
-			output.writeObject(new CommandAndDataObject(ToDo.GetMailBoxEntityByMailAddress, receiver));
+			output.writeObject(new CommandAndDataObject(ToDo.GetMailBoxEntityByMailAddress, receiver.toLowerCase()));
 			ServerResponse response = (ServerResponse) input.readObject();
-			if (response.isException()) {
+			if (response.isError()) {
 				return response;
-			}		
+			}
+			if (response.isException()) { // if receiver with such email address does not exist
+				return new ServerResponse(true,false,new MessageEntity(sender,null,theme,messageBody),response.getExceptionMessage());
+			}
 			return new ServerResponse(false,false,new MessageEntity(sender,((MailBoxEntity)response.getResult()),theme,messageBody),null);
 		} catch (Exception e) {
 			e.printStackTrace();

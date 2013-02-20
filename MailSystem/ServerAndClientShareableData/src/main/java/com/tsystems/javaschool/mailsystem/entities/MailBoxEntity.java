@@ -35,7 +35,7 @@ public class MailBoxEntity implements Serializable {
 	public MailBoxEntity() {}
 	
 	public MailBoxEntity(String emailAddress, String password, UserEntity user) {
-		this.emailAddress = emailAddress;
+		this.emailAddress = emailAddress.toLowerCase();
 		this.password = password;
 		creationDate = Calendar.getInstance();
 		this.user = user;
@@ -49,7 +49,7 @@ public class MailBoxEntity implements Serializable {
 	}
 	
 	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+		this.emailAddress = emailAddress.toLowerCase();
 	}
 	public String getEmailAddress() {
 		return emailAddress;
@@ -74,5 +74,9 @@ public class MailBoxEntity implements Serializable {
 	}
 	public UserEntity getUser() {
 		return user;
+	}
+	
+	public String toString() {
+		return getEmailAddress();
 	}
 }

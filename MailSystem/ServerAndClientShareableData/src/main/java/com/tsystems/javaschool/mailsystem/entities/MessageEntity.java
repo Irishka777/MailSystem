@@ -44,7 +44,7 @@ public class MessageEntity implements Serializable {
 	}
 	
 	public MessageEntity(MessageEntity message) {
-		this.sender = message.getReceiver();
+		this.sender = message.getSender();
 		this.receiver = message.getReceiver();
 		this.date = message.getDate();
 		this.theme = message.getTheme();
