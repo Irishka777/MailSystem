@@ -59,6 +59,21 @@ public class FolderService {
 		return new ServerResponse(true,true, null,"Wrong type of object, FolderEntity required to rename a folder, error in programe code");
 	}
 	
+	public ServerResponse getFolder(Object folder) {
+		if (folder instanceof FolderEntity) {
+			try {
+				return new ServerResponse(false,false,folderDAO.getFolder((FolderEntity)folder),null);
+			} catch (NoResultException e) {
+				return new ServerResponse(true, false, null, "Folder with such id does not exist");
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ServerResponse(true, true, null, "System error, program will be closed");
+			}
+		}
+		return new ServerResponse(true,true, null,
+				"Wrong type of object, MailBox required to get mail box folders, error in programe code");
+	}
+	
 	public ServerResponse findFoldersForMailBox(Object mailBox) {
 		if (mailBox instanceof MailBoxEntity) {
 			try {

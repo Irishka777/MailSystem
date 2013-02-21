@@ -16,7 +16,7 @@ import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
 
 public class ClientProcess {
 	
-	private MailBoxEntity userMailBox;
+//	private MailBoxEntity userMailBox;
 	
 	private String serverHost;
 	private int serverPort;
@@ -197,13 +197,13 @@ public class ClientProcess {
 		}
 	}
 	
-	public MailBoxEntity getUserMailBox() {
-		return userMailBox;
-	}
-	
-	public void setUserMailBox(MailBoxEntity userMailBox) {
-		this.userMailBox = userMailBox;
-	}
+//	public MailBoxEntity getUserMailBox() {
+//		return userMailBox;
+//	}
+//	
+//	public void setUserMailBox(MailBoxEntity userMailBox) {
+//		this.userMailBox = userMailBox;
+//	}
 	
 	public ClientMailBoxService getClientMailBoxService() {
 		return clientMailBoxService;

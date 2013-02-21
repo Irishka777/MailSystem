@@ -37,7 +37,7 @@ public class FolderDAOImpl implements FolderDAO {
 		
 		try {
 			trx.begin();
-			em.remove(folder);
+			em.remove(em.merge(folder));
 			trx.commit();
 		} finally {
 			if (trx.isActive()) {
@@ -64,6 +64,23 @@ public class FolderDAOImpl implements FolderDAO {
 			em.close();
 		}		
 		return true;
+	}
+	
+	public FolderEntity getFolder(FolderEntity folder) {
+		EntityManager em = Server.emf.createEntityManager();
+		EntityTransaction trx = em.getTransaction();
+		
+		try {
+			trx.begin();
+			folder = em.find(FolderEntity.class, folder.getId());
+			trx.commit();
+		} finally {
+			if (trx.isActive()) {
+				trx.rollback();				
+			}
+			em.close();
+		}		
+		return folder;
 	}
 	
 	public List<FolderEntity> findFoldersForMailBox(MailBoxEntity mailBox) {

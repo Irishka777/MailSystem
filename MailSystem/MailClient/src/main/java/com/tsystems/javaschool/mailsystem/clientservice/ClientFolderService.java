@@ -48,6 +48,16 @@ public class ClientFolderService {
 		}	
 	}
 	
+	public ServerResponse getFolder(FolderEntity folder) {
+		try {
+			output.writeObject(new CommandAndDataObject(ToDo.GetFolder, folder));
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");		
+		}
+	}
+	
 	public ServerResponse findFoldersForMailBox(MailBoxEntity mailBox) {
 		try {
 			output.writeObject(new CommandAndDataObject(ToDo.FindFoldersForMailBox, mailBox));

@@ -15,6 +15,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.BorderLayout;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
@@ -138,16 +139,17 @@ public class ClientLoginWindow extends JDialog {
 				.createMailBox(addressTextField.getText(), passwordField.getText(), null);
 		
 		ServerResponse response = mainWindow.getClientProcess().getClientMailBoxService().login(mailBox);
-		if (!response.isException()) {
-			mainWindow.getClientProcess().setUserMailBox((MailBoxEntity)response.getResult());
+		
+		if (response.isError()) {
+			JOptionPane.showMessageDialog(loginWindow,response.getExceptionMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+			mainWindow.getClientProcess().stopClient();
+			mainWindow.dispose();
 			dispose();
 		} else {
-			if (!response.isError()) {
+			if (response.isException()) {
 				JOptionPane.showMessageDialog(loginWindow,response.getExceptionMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 			} else {
-				JOptionPane.showMessageDialog(loginWindow,response.getExceptionMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-				mainWindow.getClientProcess().stopClient();
-				mainWindow.dispose();
+				mainWindow.getFoldersTreeModel().setRoot(new DefaultMutableTreeNode(response.getResult()));
 				dispose();
 			}
 		}

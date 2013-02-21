@@ -172,7 +172,7 @@ public class ClientNewMessageWindow extends JDialog {
 	
 	private void sendMessageActionPerformed(ActionEvent e) {
 		
-		MailBoxEntity senderMailBox = mainWindow.getClientProcess().getUserMailBox();
+		MailBoxEntity senderMailBox = mainWindow.getUserMailBox();
 		ServerResponse response = mainWindow.getClientProcess().getClientMessageService()
 				.createMessage(senderMailBox, receiverTextField.getText(), themeTextField.getText()
 						, messageBodyTextArea.getText());
@@ -212,7 +212,7 @@ public class ClientNewMessageWindow extends JDialog {
 	
 private void saveMessageActionPerformed(ActionEvent e) {
 		
-		MailBoxEntity senderMailBox = mainWindow.getClientProcess().getUserMailBox();
+		MailBoxEntity senderMailBox = mainWindow.getUserMailBox();
 		ServerResponse response = mainWindow.getClientProcess().getClientMessageService()
 				.createMessage(senderMailBox, receiverTextField.getText(), themeTextField.getText()
 						, messageBodyTextArea.getText());
@@ -245,7 +245,6 @@ private void saveMessageActionPerformed(ActionEvent e) {
 					dispose();
 					JOptionPane.showMessageDialog(mainWindow,response.getResult(),
 							"Information",JOptionPane.INFORMATION_MESSAGE);
-					
 				}
 			}
 		}

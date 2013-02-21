@@ -76,6 +76,9 @@ public class ServerProcess implements Runnable {
 				case RenameFolder:
 					output.writeObject(folderService.renameFolder(commandAndData.getData()));
 					break;
+				case GetFolder:
+					output.writeObject(folderService.getFolder(commandAndData.getData()));
+					break;
 				case FindFoldersForMailBox:
 					output.writeObject(folderService.findFoldersForMailBox(commandAndData.getData()));
 					break;

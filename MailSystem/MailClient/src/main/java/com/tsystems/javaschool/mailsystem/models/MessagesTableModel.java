@@ -32,14 +32,29 @@ public class MessagesTableModel extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat();
 		MessageEntity message = listOfMessages.get(row);
-	    switch (col) {
-	      case 0: return message.getTheme();
-	      case 1: return message.getSender();
-	      case 2: return message.getReceiver();
-	      case 3: return dateFormat.format(message.getDate().getTimeInMillis());
-	      default: return "";
-	    }
+		switch (col) {
+		case 0: return message.getTheme();
+		case 1: return message.getSender();
+		case 2: return message.getReceiver();
+		case 3: return dateFormat.format(message.getDate().getTimeInMillis());
+		default: return "";
+		}
 	}
+	
+	@Override
+	public String getColumnName(int column) {
+		return columnNames[column];
+	}
+//	// пока запрещаем редактирование данных в таблице, этим займемся позже
+//	@Override
+//	public boolean isCellEditable(int row, int col) {return false;}
+//	// оставляем как есть, потом вернемся
+//	@Override
+//	public void setValueAt(Object aValue, int row, int column) {}
+//	@Override
+//	public Class getColumnClass(int c) {
+//		return (String.class);
+//	}
 	
 	public MessageEntity getMessageAt(int row) {
 		return listOfMessages.get(row);
