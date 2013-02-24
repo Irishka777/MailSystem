@@ -15,11 +15,17 @@ public class MailBoxService {
 		if (neededMailBox instanceof MailBoxEntity) {
 			try {
 				MailBoxEntity mailBox = mailBoxDAO.findByEmailAddress(((MailBoxEntity) neededMailBox).getEmailAddress());
-				if (((MailBoxEntity) neededMailBox).getPassword().equals(mailBox.getPassword())) {
-					return new ServerResponse(false,false,mailBox,null);
-				} else {
+				byte[] password = mailBox.getPassword();
+				byte[] neededPassword = ((MailBoxEntity) neededMailBox).getPassword();
+				if (password.length != neededPassword.length) {
 					return new ServerResponse(true,false,null,"Entered password is wrong");
 				}
+				for (int i = 0; i < password.length; i++) {
+					if (password[i] != neededPassword[i]) {
+						return new ServerResponse(true,false,null,"Entered password is wrong");
+					}
+				}
+				return new ServerResponse(false,false,mailBox,null);
 			} catch (NoResultException e) {
 				return new ServerResponse(true,false,null,"There is no user with such email address");
 			} catch (Exception e) {
@@ -40,6 +46,7 @@ public class MailBoxService {
 				}
 				return new ServerResponse(true, true, null, "System error, error in programe code");
 			} catch (PersistenceException e) {
+				e.printStackTrace();
 				return new ServerResponse(true, false, null,
 						"Mail box with such email address already exists, try to use another mail box name");
 			} catch (Exception e) {

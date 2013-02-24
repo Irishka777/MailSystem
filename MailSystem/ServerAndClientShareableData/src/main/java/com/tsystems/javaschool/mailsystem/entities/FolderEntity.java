@@ -9,16 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+//import javax.persistence.UniqueConstraint;
 
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Folder")//, uniqueConstraints = @UniqueConstraint( columnNames = { "folderName", "emailAddress" }))
+@Table(name = "Folder")//, uniqueConstraints = @UniqueConstraint( columnNames = { "folderName", "mailBox" }))
 @NamedQueries({
 	@NamedQuery(name = "findByEmailAddressAndFolderName", query = "SELECT folder FROM FolderEntity folder WHERE " +
 			"folder.mailBox = :mailBox AND folder.folderName = :folderName"),
@@ -36,6 +38,7 @@ public class FolderEntity implements Serializable {
 	private MailBoxEntity mailBox;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="folder_id")
 	private List<MessageEntity> listOfMessages;
 	
 	public FolderEntity() {}

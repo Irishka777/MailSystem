@@ -114,7 +114,7 @@ public class ClientLoginWindow extends JDialog {
 		loginButton.setToolTipText("Press this button after entering email address and password to enter mail client program");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				loginButtonActionPerformed(arg0);
+				loginButtonActionPerformed();
 			}
 		});
 		
@@ -134,7 +134,7 @@ public class ClientLoginWindow extends JDialog {
 	}
 	
 	@SuppressWarnings("deprecation")
-	private void loginButtonActionPerformed(ActionEvent arg0) {
+	private void loginButtonActionPerformed() {
 		MailBoxEntity mailBox = mainWindow.getClientProcess().getClientMailBoxService()
 				.createMailBox(addressTextField.getText(), passwordField.getText(), null);
 		
@@ -150,6 +150,7 @@ public class ClientLoginWindow extends JDialog {
 				JOptionPane.showMessageDialog(loginWindow,response.getExceptionMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 			} else {
 				mainWindow.getFoldersTreeModel().setRoot(new DefaultMutableTreeNode(response.getResult()));
+				mainWindow.setFoldersInFoldersTree();
 				dispose();
 			}
 		}

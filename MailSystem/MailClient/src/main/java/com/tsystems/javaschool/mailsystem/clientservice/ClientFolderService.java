@@ -48,6 +48,16 @@ public class ClientFolderService {
 		}	
 	}
 	
+	public ServerResponse moveMessageToAnotherFolder(FolderEntity folder) {
+		try {
+			output.writeObject(new CommandAndDataObject(ToDo.MoveMessageToAnotherFolder, folder));
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ServerResponse(true, true, null, "System error, program will be closed");		
+		}	
+	}
+	
 	public ServerResponse getFolder(FolderEntity folder) {
 		try {
 			output.writeObject(new CommandAndDataObject(ToDo.GetFolder, folder));

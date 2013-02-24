@@ -28,6 +28,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
 import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
+import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 import com.tsystems.javaschool.mailsystem.models.MessagesTableModel;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
@@ -104,8 +105,10 @@ public class ClientMainWindow extends JFrame{
 		mainWindow = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Mail client");
+		
 		setContentPane(createFoldersAndMessagesSplitPane());
-		pack();	
+		pack();
+		setMinimumSize(getPreferredSize());
 		
 		addWindowListener(new WindowAdapter() {
 			public void windowOpened(WindowEvent arg0) {			
@@ -160,16 +163,11 @@ public class ClientMainWindow extends JFrame{
 				}
 				if (node.isRoot()) {
 					setFoldersInFoldersTree();
-					getFoldersTreeModel().reload();
 					return;
 				}
 
 				if (node.isLeaf()) {
-					updateFolder(node);
-					FolderEntity folder = (FolderEntity)node.getUserObject();
-					messageBodyTextArea.setText(null);
-					getMessagesTableModel().setListOfMessages(folder.getListOfMessages());
-					getMessagesTableModel().fireTableDataChanged();
+					showFolderContent(node);
 					return;
 				}
 			}
@@ -184,7 +182,7 @@ public class ClientMainWindow extends JFrame{
 		createFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		createFolderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createFolderActionPerformed(e);
+				createFolderActionPerformed();
 			}
 		});
 		
@@ -192,7 +190,7 @@ public class ClientMainWindow extends JFrame{
 		renameFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		renameFolderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				renameFolderActionPerformed();
 			}
 		});
 		
@@ -200,7 +198,7 @@ public class ClientMainWindow extends JFrame{
 		deleteFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		deleteFolderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				deleteFolderActionPerformed(e);
+				deleteFolderActionPerformed();
 			}
 		});
 		
@@ -239,15 +237,26 @@ public class ClientMainWindow extends JFrame{
 			}
 		});
 		
-		JScrollPane messugesScrollPane = new JScrollPane(messagesTable);
+		JScrollPane messagesScrollPane = new JScrollPane(messagesTable);
 		
 		JButton createMessageButton = new JButton("Create message");
 		createMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		createMessageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				newMessageWindow = new ClientNewMessageWindow(mainWindow);
-				newMessageWindow.setLocationRelativeTo(mainWindow); // the window is centered on screen
+				newMessageWindow.setLocationRelativeTo(mainWindow);
 				newMessageWindow.setVisible(true);
+				if ((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent() != null) {
+					showFolderContent((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent());
+				}	
+			}
+		});
+		
+		JButton moveMessageToAnotherFolderButton = new JButton("Move message to another folder");
+		moveMessageToAnotherFolderButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
+		moveMessageToAnotherFolderButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {;
+				moveMessageToAnotherFolderActionPerformed();
 			}
 		});
 		
@@ -255,17 +264,18 @@ public class ClientMainWindow extends JFrame{
 		deleteMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		deleteMessageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				deleteMessageActionPerformed(e);
+				deleteMessageActionPerformed();
 			}
 		});
 		
-		JPanel messageButtonsPanel = new JPanel();
+		JPanel messageButtonsPanel = new JPanel();		
 		messageButtonsPanel.add(createMessageButton);
+		messageButtonsPanel.add(moveMessageToAnotherFolderButton);
 		messageButtonsPanel.add(deleteMessageButton);
 		
 		JPanel messagesPanel = new JPanel();
 		messagesPanel.setLayout(new BorderLayout(0, 0));
-		messagesPanel.add(messugesScrollPane, BorderLayout.CENTER);
+		messagesPanel.add(messagesScrollPane, BorderLayout.CENTER);
 		messagesPanel.add(messageButtonsPanel, BorderLayout.SOUTH);
 		
 		return messagesPanel;
@@ -281,7 +291,7 @@ public class ClientMainWindow extends JFrame{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void setFoldersInFoldersTree() {
+	public void setFoldersInFoldersTree() {
 		
 		ServerResponse response = clientProcess.getClientFolderService().findFoldersForMailBox(getUserMailBox());
 		
@@ -308,10 +318,11 @@ public class ClientMainWindow extends JFrame{
 			for (FolderEntity folder:foldersList) {
 				root.add(new DefaultMutableTreeNode(folder,false));
 			}
+			getFoldersTreeModel().reload();
 		}
 	}
 	
-	public void updateFolder(DefaultMutableTreeNode node) {
+	public boolean updateFolder(DefaultMutableTreeNode node) {
 		ServerResponse response = clientProcess.getClientFolderService().getFolder((FolderEntity) node.getUserObject());
 		
 		if (response.isError()) {
@@ -319,25 +330,36 @@ public class ClientMainWindow extends JFrame{
 					"Error",JOptionPane.ERROR_MESSAGE);
 			getClientProcess().stopClient();
 			dispose();
-			return;
+			return false;
 		}
 		
 		if (response.isException()) {
 			JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
 					"Error",JOptionPane.ERROR_MESSAGE);
+			return false;
 		} else {
+			if (response.getResult() == null) {
+				setFoldersInFoldersTree();
+				return false;
+			}
 			node.setUserObject(response.getResult());
+			return true;
 		}
 	}
 	
-	private void createFolderActionPerformed(ActionEvent e) {
-		String newFolderName = (String)JOptionPane.showInputDialog(mainWindow, "Enter a name for the new folder",
-				"Creat a new folder",JOptionPane.PLAIN_MESSAGE);
-		if (newFolderName.trim().equals("")) {
-			JOptionPane.showMessageDialog(mainWindow,"Folder without name can not be created",
+	private void createFolderActionPerformed() {
+		String newFolderName = ((String)JOptionPane.showInputDialog(mainWindow, "Enter a name for the new folder",
+				"Creat a new folder",JOptionPane.PLAIN_MESSAGE));
+		if (newFolderName == null) {
+			return;
+		}
+		newFolderName = newFolderName.trim();
+		if (newFolderName.equals("")) {
+			JOptionPane.showMessageDialog(mainWindow,"Folder without a name can not be created",
 					"Error",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+		
 		setFoldersInFoldersTree();
 		Object root = getFoldersTreeModel().getRoot();
 		int foldersCount = getFoldersTreeModel().getChildCount(root);
@@ -348,6 +370,7 @@ public class ClientMainWindow extends JFrame{
 				return;
 			}
 		}
+		
 		ServerResponse response = getClientProcess().getClientFolderService()
 				.createFolder(new FolderEntity(newFolderName,getUserMailBox()));
 		if (response.isError()) {
@@ -361,14 +384,80 @@ public class ClientMainWindow extends JFrame{
 						"Error",JOptionPane.ERROR_MESSAGE);
 			} else {
 				setFoldersInFoldersTree();
-				getFoldersTreeModel().reload();
 				JOptionPane.showMessageDialog(mainWindow,response.getResult(),
 						"Information",JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}
 	
-	private void deleteFolderActionPerformed(ActionEvent e) {
+	private void renameFolderActionPerformed() {
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent();
+		if ((node == null) || (node.isRoot())) {
+			JOptionPane.showMessageDialog(mainWindow,"You should select a folder for renaming",
+					"Error",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		if ((node.getUserObject().toString().equals("Outgoing messages")) 
+				|| (node.getUserObject().toString().equals("Incoming messages")) 
+				|| (node.getUserObject().toString().equals("Draft messages"))) {
+			JOptionPane.showMessageDialog(mainWindow,"You can not rename \"Outgoing messages\"" +
+					", \"Incoming messages\" and \"Draft messages\" folders",
+					"Error",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		String newFolderName = ((String)JOptionPane.showInputDialog(mainWindow,
+				"Enter a new name for the folder" + node.getUserObject().toString(),
+				"Renaming a folder"+node.getUserObject().toString(),JOptionPane.PLAIN_MESSAGE));
+		
+		if (!updateFolder((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent())) {
+			JOptionPane.showMessageDialog(mainWindow,"Current folder have been deleted",
+					"Error",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		if (newFolderName == null) {
+			return;
+		}
+		newFolderName = newFolderName.trim();
+		if (newFolderName.equals("")) {
+			JOptionPane.showMessageDialog(mainWindow,"Folder without name can not exist",
+					"Error",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+//		setFoldersInFoldersTree();
+		Object root = getFoldersTreeModel().getRoot();
+		int foldersCount = getFoldersTreeModel().getChildCount(root);
+		for (int index = 0; index < foldersCount; index++) {
+			if (getFoldersTreeModel().getChild(root, index).toString().toLowerCase().equals(newFolderName.toLowerCase())) {
+				JOptionPane.showMessageDialog(mainWindow,"Folder with such a name already exists",
+						"Error",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		((FolderEntity)node.getUserObject()).setFolderName(newFolderName);
+		ServerResponse response = getClientProcess().getClientFolderService()
+				.renameFolder(((FolderEntity)node.getUserObject()));
+		if (response.isError()) {
+			JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+					"Error",JOptionPane.ERROR_MESSAGE);
+			getClientProcess().stopClient();
+			dispose();
+		} else {
+			if (response.isException()) {
+				JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+						"Error",JOptionPane.ERROR_MESSAGE);
+			} else {
+				setFoldersInFoldersTree();
+				JOptionPane.showMessageDialog(mainWindow,response.getResult(),
+						"Information",JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+	}
+	
+	private void deleteFolderActionPerformed() {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent();
 		if ((node == null) || (node.isRoot())) {
 			JOptionPane.showMessageDialog(mainWindow,"You should select a folder for deletion at first",
@@ -384,9 +473,17 @@ public class ClientMainWindow extends JFrame{
 					"Error",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+		
+//		if (!updateFolder((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent())) {
+//			JOptionPane.showMessageDialog(mainWindow,"Current folder have been deleted",
+//					"Error",JOptionPane.ERROR_MESSAGE);
+//			return;
+//		}
+		
 		int n = JOptionPane.showConfirmDialog(mainWindow,
 				"Are you sure you want to delete \"" + node.getUserObject().toString() + "\" folder?",
-			    "Question",JOptionPane.OK_CANCEL_OPTION);	
+			    "Question",JOptionPane.OK_CANCEL_OPTION);
+		
 		if (n == JOptionPane.OK_OPTION) {
 			ServerResponse response = getClientProcess().getClientFolderService()
 					.deleteFolder((FolderEntity)node.getUserObject());
@@ -401,7 +498,6 @@ public class ClientMainWindow extends JFrame{
 							"Error",JOptionPane.ERROR_MESSAGE);
 				} else {
 					setFoldersInFoldersTree();
-					getFoldersTreeModel().reload();
 					JOptionPane.showMessageDialog(mainWindow,response.getResult(),
 							"Information",JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -409,7 +505,86 @@ public class ClientMainWindow extends JFrame{
 		}
 	}
 	
-	private void deleteMessageActionPerformed(ActionEvent e) {
+	private void moveMessageToAnotherFolderActionPerformed() {
+		if (!updateFolder((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent())) {
+			JOptionPane.showMessageDialog(mainWindow,"Current folder have been deleted by someone",
+					"Error",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		int row = messagesTable.getSelectedRow();
+		if (row == -1) {
+			JOptionPane.showMessageDialog(mainWindow,"You should select a message for moving at first",
+					"Error",JOptionPane.ERROR_MESSAGE);
+		} else {
+			
+			DefaultMutableTreeNode root = (DefaultMutableTreeNode)getFoldersTreeModel().getRoot();
+			Object[] folderNames = new Object[getFoldersTreeModel().getChildCount(root)];
+			for (int index = 0; index < folderNames.length; index++) {
+				folderNames[index] = getFoldersTreeModel().getChild(root, index);				
+			}
+			DefaultMutableTreeNode newFolderName = ((DefaultMutableTreeNode)JOptionPane
+					.showInputDialog(mainWindow, "Select a new folder for a message","Move to another folder",
+							JOptionPane.PLAIN_MESSAGE,null,folderNames,
+							(DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent()));
+			
+			if (!updateFolder(newFolderName)) {
+				JOptionPane.showMessageDialog(mainWindow,"Folderwith such a name have been deleted by someone",
+						"Error",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			if ((newFolderName == (DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent()) 
+					|| (newFolderName == null)) {
+				return; // folder have not changed
+			}
+			
+			
+			MessageEntity message = new MessageEntity(((MessagesTableModel)messagesTable.getModel())
+					.getMessageAt(row));
+			
+			ServerResponse response = getClientProcess().getClientMessageService()
+					.deleteMessage(((MessagesTableModel)messagesTable.getModel()).getMessageAt(row));
+			if (response.isError()) {
+				JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+						"Error",JOptionPane.ERROR_MESSAGE);
+				getClientProcess().stopClient();
+				dispose();
+			} else {
+				if (response.isException()) {
+					JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+							"Error",JOptionPane.ERROR_MESSAGE);
+				} else {
+					((FolderEntity)newFolderName.getUserObject()).getListOfMessages().add(message);
+					response = getClientProcess().getClientFolderService()
+							.moveMessageToAnotherFolder((FolderEntity)newFolderName.getUserObject());
+					if (response.isError()) {
+						JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+								"Error",JOptionPane.ERROR_MESSAGE);
+						getClientProcess().stopClient();
+						dispose();
+					} else {
+						if (response.isException()) {
+							JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
+									"Error",JOptionPane.ERROR_MESSAGE);
+						} else {
+							showFolderContent((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent());
+							JOptionPane.showMessageDialog(mainWindow,response.getResult(),
+									"Information",JOptionPane.INFORMATION_MESSAGE);	
+						}
+					}					
+				}
+			}		
+		}
+	}
+	
+	private void deleteMessageActionPerformed() {
+		
+		if (!updateFolder((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent())) {
+			JOptionPane.showMessageDialog(mainWindow,"Current folder have been deleted by someone",
+					"Error",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		int row = messagesTable.getSelectedRow();
 		if (row == -1) {
 			JOptionPane.showMessageDialog(mainWindow,"You should select a message for deletion at first",
@@ -429,12 +604,22 @@ public class ClientMainWindow extends JFrame{
 					if (response.isException()) {
 						JOptionPane.showMessageDialog(mainWindow,response.getExceptionMessage(),
 								"Error",JOptionPane.ERROR_MESSAGE);
-					} else {
-						((MessagesTableModel)messagesTable.getModel()).deleteMessageAt(row);
-						((MessagesTableModel) messagesTable.getModel()).fireTableDataChanged();
+					} else {;
+						showFolderContent((DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent());
+						JOptionPane.showMessageDialog(mainWindow,response.getResult(),
+								"Information",JOptionPane.INFORMATION_MESSAGE);						
 					}
 				}				
 			}
+		}
+	}
+	
+	private void showFolderContent(DefaultMutableTreeNode node) {
+		if (updateFolder(node)) {
+			FolderEntity folder = (FolderEntity)node.getUserObject();
+			messageBodyTextArea.setText(null);
+			getMessagesTableModel().setListOfMessages(folder.getListOfMessages());
+			getMessagesTableModel().fireTableDataChanged();
 		}
 	}
 	

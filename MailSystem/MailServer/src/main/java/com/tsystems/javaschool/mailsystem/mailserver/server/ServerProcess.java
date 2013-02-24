@@ -64,6 +64,9 @@ public class ServerProcess implements Runnable {
 				case SaveMessage:
 					output.writeObject(messageService.saveMessage(commandAndData.getData()));
 					break;
+				case MoveMessageToAnotherFolder:
+					output.writeObject(folderService.moveMessageToAnotherFolder(commandAndData.getData()));
+					break;
 				case DeleteMessage:
 					output.writeObject(messageService.deleteMessage(commandAndData.getData()));
 					break;
@@ -81,8 +84,6 @@ public class ServerProcess implements Runnable {
 					break;
 				case FindFoldersForMailBox:
 					output.writeObject(folderService.findFoldersForMailBox(commandAndData.getData()));
-					break;
-				case MoveMessageToAnotherFolder:
 					break;
 				case Update:
 					break;

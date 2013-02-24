@@ -47,7 +47,7 @@ public class FolderService {
 	public ServerResponse renameFolder(Object folder) {
 		if (folder instanceof FolderEntity) {
 			try {
-				if (folderDAO.rename((FolderEntity) folder)) {
+				if (folderDAO.update((FolderEntity) folder)) {
 					return new ServerResponse(false,false,"Folder successfully renamed",null);
 				}
 				return new ServerResponse(true, true, null, "System error, error in programe code");
@@ -56,7 +56,24 @@ public class FolderService {
 				return new ServerResponse(true, true, null, "System error, program will be closed");
 			}		
 		}
-		return new ServerResponse(true,true, null,"Wrong type of object, FolderEntity required to rename a folder, error in programe code");
+		return new ServerResponse(true,true, null,
+				"Wrong type of object, FolderEntity required to rename a folder, error in programe code");
+	}
+	
+	public ServerResponse moveMessageToAnotherFolder(Object folder) {
+		if (folder instanceof FolderEntity) {
+			try {
+				if (folderDAO.update((FolderEntity) folder)) {
+					return new ServerResponse(false,false,"Message successfully moved to another folder",null);
+				}
+				return new ServerResponse(true, true, null, "System error, error in programe code");
+			} catch (Exception e) {
+				e.printStackTrace();
+				return new ServerResponse(true, true, null, "System error, program will be closed");
+			}		
+		}
+		return new ServerResponse(true,true, null,
+				"Wrong type of object, FolderEntity required to rename a folder, error in programe code");
 	}
 	
 	public ServerResponse getFolder(Object folder) {

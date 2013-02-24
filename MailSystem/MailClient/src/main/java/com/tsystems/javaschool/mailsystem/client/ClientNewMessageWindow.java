@@ -41,7 +41,7 @@ public class ClientNewMessageWindow extends JDialog {
 		newMessageWindow = this;
 		mainWindow = clientMainWindow;
 		setModal(true);
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setTitle("Create a new message");
 		setBounds(100, 100, 600, 600);
 		
@@ -50,8 +50,8 @@ public class ClientNewMessageWindow extends JDialog {
 		getContentPane().add(createButtonsPanel(), BorderLayout.SOUTH);
 		
 		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent arg0) {
-				
+			public void windowClosing(WindowEvent e) {
+				cancelActionPerformed();
 			}
 		});
 	}
@@ -143,7 +143,7 @@ public class ClientNewMessageWindow extends JDialog {
 		sendMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		sendMessageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sendMessageActionPerformed(e);
+				sendMessageActionPerformed();
 			}
 		});
 		
@@ -151,7 +151,7 @@ public class ClientNewMessageWindow extends JDialog {
 		saveMessageButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		saveMessageButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				saveMessageActionPerformed(e);
+				saveMessageActionPerformed();
 			}
 		});
 		
@@ -159,6 +159,7 @@ public class ClientNewMessageWindow extends JDialog {
 		cancelButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cancelActionPerformed();
 			}
 		});
 		
@@ -170,7 +171,7 @@ public class ClientNewMessageWindow extends JDialog {
 		return buttonsPanel;
 	}
 	
-	private void sendMessageActionPerformed(ActionEvent e) {
+	private void sendMessageActionPerformed() {
 		
 		MailBoxEntity senderMailBox = mainWindow.getUserMailBox();
 		ServerResponse response = mainWindow.getClientProcess().getClientMessageService()
@@ -210,7 +211,7 @@ public class ClientNewMessageWindow extends JDialog {
 		}
 	}
 	
-private void saveMessageActionPerformed(ActionEvent e) {
+	private void saveMessageActionPerformed() {
 		
 		MailBoxEntity senderMailBox = mainWindow.getUserMailBox();
 		ServerResponse response = mainWindow.getClientProcess().getClientMessageService()
@@ -247,6 +248,21 @@ private void saveMessageActionPerformed(ActionEvent e) {
 							"Information",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
+		}
+	}
+	
+	private void cancelActionPerformed() {
+		int i = JOptionPane.showConfirmDialog(newMessageWindow,"Save the message?",
+			    "Question",JOptionPane.YES_NO_CANCEL_OPTION);
+		switch (i) {
+		case JOptionPane.YES_OPTION:
+			saveMessageActionPerformed();
+			break;
+		case JOptionPane.NO_OPTION:
+			dispose();
+			break;
+		case JOptionPane.CANCEL_OPTION:
+			break;
 		}
 	}
 }

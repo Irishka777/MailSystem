@@ -48,7 +48,7 @@ public class FolderDAOImpl implements FolderDAO {
 		return true;
 	}
 	
-	public boolean rename(FolderEntity folder) {
+	public boolean update(FolderEntity folder) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();

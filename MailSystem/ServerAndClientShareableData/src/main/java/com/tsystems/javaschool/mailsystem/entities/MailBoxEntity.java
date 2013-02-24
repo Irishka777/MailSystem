@@ -1,6 +1,9 @@
 package com.tsystems.javaschool.mailsystem.entities;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 
 import javax.persistence.CascadeType;
@@ -25,7 +28,8 @@ public class MailBoxEntity implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String emailAddress;
 	
-	private String password;
+	@Column(columnDefinition = "binary(50)")
+	private byte[] password;
 	
 	private Calendar creationDate;
 	
@@ -36,7 +40,24 @@ public class MailBoxEntity implements Serializable {
 	
 	public MailBoxEntity(String emailAddress, String password, UserEntity user) {
 		this.emailAddress = emailAddress.toLowerCase();
-		this.password = password;
+
+		try {
+			String salt = "qwertyuiopasdfghjklzxcvbnm";
+			password = password+salt;
+			
+			MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+			byte[] bytesOfPassword;
+			bytesOfPassword = messageDigest.digest(password.getBytes(Charset.forName("UTF8")));
+			
+			this.password = new byte[50];
+			for (int i = 0; i < bytesOfPassword.length; i++) {
+				this.password[i] = bytesOfPassword[i];
+			}
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
 		creationDate = Calendar.getInstance();
 		this.user = user;
 	}
@@ -55,10 +76,10 @@ public class MailBoxEntity implements Serializable {
 		return emailAddress;
 	}
 	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getPassword() {
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+	public byte[] getPassword() {
 		return password;
 	}
 	
