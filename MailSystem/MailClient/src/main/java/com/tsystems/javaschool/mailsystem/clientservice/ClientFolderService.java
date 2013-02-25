@@ -3,6 +3,7 @@ package com.tsystems.javaschool.mailsystem.clientservice;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.tsystems.javaschool.mailsystem.client.ClientProcess;
 import com.tsystems.javaschool.mailsystem.entities.FolderEntity;
 import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
@@ -23,7 +24,7 @@ public class ClientFolderService {
 			output.writeObject(new CommandAndDataObject(ToDo.CreateFolder, folder));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");	
 		}	
 	}
@@ -33,7 +34,7 @@ public class ClientFolderService {
 			output.writeObject(new CommandAndDataObject(ToDo.DeleteFolder, folder));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");	
 		}	
 	}
@@ -43,7 +44,7 @@ public class ClientFolderService {
 			output.writeObject(new CommandAndDataObject(ToDo.RenameFolder, folder));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");		
 		}	
 	}
@@ -53,7 +54,7 @@ public class ClientFolderService {
 			output.writeObject(new CommandAndDataObject(ToDo.MoveMessageToAnotherFolder, folder));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");		
 		}	
 	}
@@ -63,7 +64,7 @@ public class ClientFolderService {
 			output.writeObject(new CommandAndDataObject(ToDo.GetFolder, folder));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");		
 		}
 	}
@@ -73,7 +74,7 @@ public class ClientFolderService {
 			output.writeObject(new CommandAndDataObject(ToDo.FindFoldersForMailBox, mailBox));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");		
 		}	
 	}

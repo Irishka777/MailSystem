@@ -1,2 +1,0 @@
-2013-02-25 03:29:16,722 [DEBUG] org.jboss.logging Logging Provider: org.jboss.logging.Log4jLoggerProvider at org.hibernate.ejb.Ejb3Configuration.<clinit>(Ejb3Configuration.java:142)
-2013-02-25 03:29:35,634 [ERROR] com.tsystems.javaschool.mailsystem.mailserver.server.Server No entity found for query at com.tsystems.javaschool.mailsystem.mailserver.service.MailBoxService.login(MailBoxService.java:31)

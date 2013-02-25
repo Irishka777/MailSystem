@@ -3,6 +3,7 @@ package com.tsystems.javaschool.mailsystem.clientservice;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.tsystems.javaschool.mailsystem.client.ClientProcess;
 import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
@@ -27,11 +28,13 @@ public class ClientMessageService {
 				return response;
 			}
 			if (response.isException()) { // if receiver with such email address does not exist
-				return new ServerResponse(true,false,new MessageEntity(sender,null,theme,messageBody),response.getExceptionMessage());
+				return new ServerResponse(true, false, new MessageEntity(sender,null,theme,messageBody),
+						response.getExceptionMessage());
 			}
-			return new ServerResponse(false,false,new MessageEntity(sender,((MailBoxEntity)response.getResult()),theme,messageBody),null);
+			return new ServerResponse(false, false, 
+					new MessageEntity(sender,((MailBoxEntity)response.getResult()),theme,messageBody), null);
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");
 		}
 	}
@@ -41,7 +44,7 @@ public class ClientMessageService {
 			output.writeObject(new CommandAndDataObject(ToDo.SendMessage, message));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");			
 		}	
 	}
@@ -51,7 +54,7 @@ public class ClientMessageService {
 			output.writeObject(new CommandAndDataObject(ToDo.SaveMessage, message));
 			return (ServerResponse) input.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");			
 		}	
 	}
@@ -61,7 +64,7 @@ public class ClientMessageService {
 			output.writeObject(new CommandAndDataObject(ToDo.DeleteMessage, message));
 			return (ServerResponse) input.readObject();			
 		} catch (Exception e) {
-			e.printStackTrace();
+			ClientProcess.logger.error(e.getMessage(),e);
 			return new ServerResponse(true, true, null, "System error, program will be closed");		
 		}	
 	}

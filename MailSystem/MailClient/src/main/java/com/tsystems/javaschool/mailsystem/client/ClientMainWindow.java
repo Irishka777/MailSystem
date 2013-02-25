@@ -528,17 +528,17 @@ public class ClientMainWindow extends JFrame{
 							JOptionPane.PLAIN_MESSAGE,null,folderNames,
 							(DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent()));
 			
+			if ((newFolderName == null) 
+					|| (newFolderName == (DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent())) {
+				return; // folder is not changed
+			}
+			
 			if (!updateFolder(newFolderName)) {
 				JOptionPane.showMessageDialog(mainWindow,"Folderwith such a name have been deleted by someone",
 						"Error",JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			if ((newFolderName == (DefaultMutableTreeNode)foldersTree.getLastSelectedPathComponent()) 
-					|| (newFolderName == null)) {
-				return; // folder have not changed
-			}
-			
-			
+
 			MessageEntity message = new MessageEntity(((MessagesTableModel)messagesTable.getModel())
 					.getMessageAt(row));
 			

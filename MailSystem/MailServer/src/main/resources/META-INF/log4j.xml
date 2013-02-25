@@ -8,7 +8,7 @@
     </layout>
     <filter class="org.apache.log4j.varia.LevelRangeFilter">
       <param name="LevelMin" value="ALL"/>
-      <param name="LevelMax" value="INFO"/>
+      <param name="LevelMax" value="DEBUG"/>
     </filter>
   </appender>
   <appender name="CONSOLE-WARN" class="org.apache.log4j.ConsoleAppender">
@@ -20,24 +20,36 @@
       <param name="LevelMin" value="WARN"/>
     </filter>
   </appender>
+   <appender name="CONSOLE-INFO" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601} [%5p] %m at %l%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+      <param name="LevelMax" value="INFO"/>
+    </filter>
+  </appender>
   <appender name="LOG-FILE-APPENDER" class="org.apache.log4j.FileAppender">
     <param name="file" value="server.log"/>
     <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="%d{ISO8601} [%5p] %c %m at %l%n"/>
+      <param name="ConversionPattern" value="%d{ISO8601} [%5p] %m at %l%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+    </filter>
+  </appender>
+   <appender name="FULL-LOG-FILE-APPENDER" class="org.apache.log4j.FileAppender">
+    <param name="file" value="fullserverlog.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601} [%5p] %m at %l%n"/>
     </layout>
   </appender>
-  <category name="org.hibernate" additivity="false">
-    <priority value="WARN"/>
-    <appender-ref ref="CONSOLE-WARN"/>
-    <appender-ref ref="CONSOLE-DEBUG"/>
-  </category>
-  <category name="org.hibernate.SQL">
-    <priority value="DEBUG"/>
-  </category>
   <root>
-    <priority value="DEBIG"/>
+    <priority value="DEBUG"/>
     <appender-ref ref="CONSOLE-WARN"/>
-    <appender-ref ref="CONSOLE-DEBUG"/>
+    <appender-ref ref="CONSOLE-INFO"/>
     <appender-ref ref="LOG-FILE-APPENDER"/>
+    <appender-ref ref="FULL-LOG-FILE-APPENDER"/>
   </root>
 </log4j:configuration>

@@ -31,7 +31,7 @@
     </filter>
   </appender>
   <appender name="LOG-FILE-APPENDER" class="org.apache.log4j.FileAppender">
-    <param name="file" value="server.log"/>
+    <param name="file" value="client.log"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="%d{ISO8601} [%5p] %m at %l%n"/>
     </layout>
@@ -40,7 +40,7 @@
     </filter>
   </appender>
    <appender name="FULL-LOG-FILE-APPENDER" class="org.apache.log4j.FileAppender">
-    <param name="file" value="fullserverlog.log"/>
+    <param name="file" value="fullclientlog.log"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="%d{ISO8601} [%5p] %m at %l%n"/>
     </layout>

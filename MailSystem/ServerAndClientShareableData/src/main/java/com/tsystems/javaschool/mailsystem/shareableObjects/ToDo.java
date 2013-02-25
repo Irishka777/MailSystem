@@ -6,5 +6,5 @@ package com.tsystems.javaschool.mailsystem.shareableObjects;
 public enum ToDo {
 	Registration, Login, GetMailBoxEntityByMailAddress, SendMessage, SaveMessage, DeleteMessage,
 	CreateFolder, DeleteFolder, RenameFolder, GetFolder, FindFoldersForMailBox,
-	MoveMessageToAnotherFolder, Update, CloseSocket
+	MoveMessageToAnotherFolder, CloseSocket
 }

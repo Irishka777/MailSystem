@@ -1,6 +1,5 @@
 package com.tsystems.javaschool.mailsystem.mailserver.server;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -42,7 +41,7 @@ public class Server {
 	
 	public void startServer() {
 		
-		System.out.println("Server is started...");
+		Server.logger.info("Server is started...");
 			
 		if (!openServerSocket()) {
 			return;
@@ -51,9 +50,8 @@ public class Server {
 			while (!serverStoped) {
 				try {
 					clientSocket = server.accept();
-				} catch (IOException e) {
-					System.out.println("IOException: an I/O error occurs when waiting for a connection");
-					e.printStackTrace();
+				} catch (Exception e) {
+					Server.logger.error("Error occurs when waiting for a connection", e);
 				}
 				new Thread(new ServerProcess(clientSocket,messageService,folderService,loginService)).start();
 			}
@@ -61,17 +59,17 @@ public class Server {
 			if (!closeServerSocket()) {
 				return;
 			}
-			System.out.println("Server stoped");
+			Server.logger.info("Server stoped");
 		}	
 	}
 	
 	private boolean openServerSocket() {
 		try {
 			server = new ServerSocket(port);
+			Server.logger.info("Server socked is opened");
 			return true;
-		} catch (IOException e) {
-			System.out.println("IOException: an I/O error occurs when opening the socket");
-			e.printStackTrace();
+		} catch (Exception e) {
+			Server.logger.error("Error occurs when opening the socket", e);
 			return false;
 		}
 	}
@@ -79,10 +77,10 @@ public class Server {
 	private boolean closeServerSocket() {
 		try {
 			server.close();
+			Server.logger.info("Server socked is closed");
 			return true;
-		} catch (IOException e) {
-			System.out.println("IOException: an I/O error occurs when closing the socket.");
-			e.printStackTrace();
+		} catch (Exception e) {
+			Server.logger.error("Error occurs when closing the socket", e);
 			return false;
 		}
 	}

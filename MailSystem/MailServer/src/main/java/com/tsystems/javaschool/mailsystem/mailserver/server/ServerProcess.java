@@ -10,7 +10,7 @@ import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 import com.tsystems.javaschool.mailsystem.shareableObjects.CommandAndDataObject;
 
  /*
-  * object ServerProcess creates for every server client
+  * object ServerProcess is created for every server client
   */
 
 public class ServerProcess implements Runnable {
@@ -39,15 +39,8 @@ public class ServerProcess implements Runnable {
 		
 		closeSocket: while (true) {
 			try {
-				CommandAndDataObject commandAndData = null;
-				
-				try {
-					commandAndData = (CommandAndDataObject) input.readObject();
-				} catch (ClassNotFoundException e) {
-					System.out.println(e.getMessage() + "InputStrean is in an indeterminate state, closeing socket");
-					break closeSocket;			
-				}
-				
+				CommandAndDataObject commandAndData = (CommandAndDataObject) input.readObject();
+
 				switch (commandAndData.getCommand()) {
 				case Registration:		
 					output.writeObject(loginService.registration(commandAndData.getData()));
@@ -85,14 +78,15 @@ public class ServerProcess implements Runnable {
 				case FindFoldersForMailBox:
 					output.writeObject(folderService.findFoldersForMailBox(commandAndData.getData()));
 					break;
-				case Update:
-					break;
 				case CloseSocket:
 					break closeSocket;
 				}
+				
+			} catch (ClassNotFoundException e) {
+				Server.logger.error("Wrong type of object, inputStrean is in the indeterminate state; socket will be closed", e);
+				break closeSocket;			
 			} catch (Exception e) {
-				System.out.println("Exception in process of comunication with client " + e.getMessage() + " closing socket");
-				e.printStackTrace();
+				Server.logger.error("Exception in process of comunication with client; socket will be closed", e);
 				break closeSocket;
 			}
 		}
@@ -102,28 +96,11 @@ public class ServerProcess implements Runnable {
 		try {		
 			output = new ObjectOutputStream(clientSocket.getOutputStream());
 			input = new ObjectInputStream(clientSocket.getInputStream());
+			Server.logger.info("Input and output streams are created");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Exception in process of creating input and output streams");
-			e.printStackTrace();
+			Server.logger.error("Exception in process of creating input and output streams", e);
 			return false;
 		}	
-//		return testConnectionBetweenServerAndClient();
 	}
-	
-//	private boolean testConnectionBetweenServerAndClient()
-//	{
-//		try {
-//			output.writeObject("Connection set");
-//			System.out.println((String) input.readObject());
-//		} catch (ClassNotFoundException e) {
-//			System.out.println("ClassNotFoundException: Class of a serialized object cannot be found");
-//			e.printStackTrace();
-//			return false;
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//		return true;
-//	}
 }

@@ -6,6 +6,8 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.apache.log4j.Logger;
+
 import com.tsystems.javaschool.mailsystem.clientservice.ClientFolderService;
 import com.tsystems.javaschool.mailsystem.clientservice.ClientMailBoxService;
 import com.tsystems.javaschool.mailsystem.clientservice.ClientMessageService;
@@ -15,6 +17,7 @@ import com.tsystems.javaschool.mailsystem.shareableObjects.ToDo;
 
 public class ClientProcess {
 	
+	public static Logger logger = Logger.getLogger(ClientProcess.class);
 	private String serverHost;
 	private int serverPort;
 	private Socket clientSocket = null;
@@ -35,6 +38,18 @@ public class ClientProcess {
 		serverPort = port;
 	}
 	
+	public ClientMailBoxService getClientMailBoxService() {
+		return clientMailBoxService;
+	}
+	
+	public ClientMessageService getClientMessageService() {
+		return clientMessageService;
+	}
+	
+	public ClientFolderService getClientFolderService() {
+		return clientFolderService;
+	}
+	
 	public boolean startClient() {
 		if (!openClientSocket()) {
 			return false;
@@ -45,11 +60,9 @@ public class ClientProcess {
 		if (!createClientServices()) {
 			return false;
 		}
-		System.out.println("Client started");
 		
-//		System.out.println(clientMailBoxService.registration(
-//				clientMailBoxService.createMailBox("mail@mail.ru", "123","Vasia", "Petrov", 1986, 9, 3, "4325665")));
-//		
+		ClientProcess.logger.info("Client started...");
+		
 //		System.out.println(clientMailBoxService.registration(
 //				clientMailBoxService.createMailBox("mail@mail.ru", "123","Vasia", "Petrov", 1986, 9, 3, "4325665")));
 //		
@@ -71,18 +84,16 @@ public class ClientProcess {
 	private boolean openClientSocket() {
 		try {
 			clientSocket = new Socket(serverHost,serverPort);
+			ClientProcess.logger.info("Client socket is opened");
 			return true;
 		} catch (UnknownHostException e) {
-			System.out.println("UnknownHostException: the IP address of the host could not be determined");
-			e.printStackTrace();
+			ClientProcess.logger.error("UnknownHostException: the IP address of the host could not be determined",e);
 			return false;
 		} catch (ConnectException e) {
-			System.out.println("Connection refused: server do not started");
-			e.printStackTrace();
+			ClientProcess.logger.error("Connection refused: server do not started",e);
 			return false;
 		} catch (Exception e) {
-			System.out.println("Unknown error in proces of creatin client socket");
-			e.printStackTrace();
+			ClientProcess.logger.error("Unexpected error in proces of creatin client socket",e);
 			return false;
 		}
 	}
@@ -91,16 +102,15 @@ public class ClientProcess {
 		try {	
 			output = new ObjectOutputStream(clientSocket.getOutputStream());
 			input = new ObjectInputStream(clientSocket.getInputStream());
+			ClientProcess.logger.info("Input and output streams are created");
 			return true;
 		} catch (Exception e) {
+			ClientProcess.logger.error("Faild to create input and output streams",e);
 			try {
 				clientSocket.close();
 			} catch (Exception e1) {
-				System.out.println("Faild to close created socket");
-				e1.printStackTrace();
+				ClientProcess.logger.error("Faild to close created socket",e1);
 			}
-			System.out.println("Faild to create input and output streams");
-			e.printStackTrace();
 			return false;
 		}
 	}
@@ -112,29 +122,16 @@ public class ClientProcess {
 		return true;
 	}
 	
-	private boolean closeClientSocket()
-	{
+	private boolean closeClientSocket() {
 		try {			
 			output.writeObject(new CommandAndDataObject(ToDo.CloseSocket, null));
 			clientSocket.close();
-			System.out.println("Client stoped");
+			ClientProcess.logger.info("Client stoped");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Exception in process of closing clientSocket, socket did not closed correctly");
-			e.printStackTrace();
+			ClientProcess.logger.error(
+					"Exception in process of closing clientSocket, socket have not closed correctly",e);
 			return false;
 		}
-	}
-	
-	public ClientMailBoxService getClientMailBoxService() {
-		return clientMailBoxService;
-	}
-	
-	public ClientMessageService getClientMessageService() {
-		return clientMessageService;
-	}
-	
-	public ClientFolderService getClientFolderService() {
-		return clientFolderService;
 	}
 }
