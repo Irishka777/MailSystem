@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import org.apache.log4j.Logger;
 
 import com.tsystems.javaschool.mailsystem.mailserver.service.FolderService;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MailBoxService;
@@ -16,6 +16,7 @@ import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 public class Server {
 	
 	public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("mailsystem");
+	public static Logger logger = Logger.getLogger(Server.class);
 	
 	private ServerSocket server = null;
 	private int port;
@@ -34,7 +35,7 @@ public class Server {
 		port = portNumber;
 	}
 	
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		Server myServer = new Server();
 		myServer.startServer();
 	}

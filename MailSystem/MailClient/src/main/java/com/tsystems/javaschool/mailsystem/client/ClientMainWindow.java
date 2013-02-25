@@ -114,7 +114,7 @@ public class ClientMainWindow extends JFrame{
 			public void windowOpened(WindowEvent arg0) {			
 				loginWindow = new ClientLoginWindow(mainWindow);
 				loginWindow.setLocationRelativeTo(mainWindow); // the window is centered on screen
-				loginWindow.setVisible(true);				
+				loginWindow.setVisible(true);
 			}
 			public void windowClosing(WindowEvent arg0) {
 				clientProcess.stopClient();

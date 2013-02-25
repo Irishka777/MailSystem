@@ -3,6 +3,7 @@ package com.tsystems.javaschool.mailsystem.mailserver.service;
 import com.tsystems.javaschool.mailsystem.entities.MessageEntity;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MessageDAO;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MessageDAOImpl;
+import com.tsystems.javaschool.mailsystem.mailserver.server.Server;
 import com.tsystems.javaschool.mailsystem.mailserver.service.MessageService;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
@@ -22,7 +23,8 @@ public class MessageService {
 				}
 				return new ServerResponse(true, true, null, "System error, error in programe code");
 			} catch (Exception e) {
-				e.printStackTrace();
+				Server.logger.error(e.getStackTrace());
+//				e.printStackTrace();
 				return new ServerResponse(true, true, null, "System error, program will be closed");
 			}		
 		}

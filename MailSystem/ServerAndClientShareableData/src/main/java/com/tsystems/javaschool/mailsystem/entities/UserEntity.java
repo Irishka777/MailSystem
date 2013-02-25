@@ -1,7 +1,7 @@
 package com.tsystems.javaschool.mailsystem.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,17 +21,15 @@ public class UserEntity implements Serializable {
 	private String surname;
 	
 	@Column(columnDefinition = "DATE")
-	private Calendar dateOfBirth;
+	private Date dateOfBirth;
 	private String phoneNumber;
 	
 	public UserEntity() {}
 	
-	public UserEntity(String name, String surname, int year, int month, int day, String phoneNumber) {
+	public UserEntity(String name, String surname, Date dateOfBirth, String phoneNumber) {
 		this.name = name;
 		this.surname = surname;
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(year,month,day,0,0,0);
-		this.dateOfBirth = calendar;
+		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -56,10 +54,10 @@ public class UserEntity implements Serializable {
 		return surname;
 	}
 	
-	public void setDate(Calendar dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	public Calendar getDate() {
+//	public void setDate(Calendar dateOfBirth) {
+//		this.dateOfBirth = dateOfBirth;
+//	}
+	public Date getDate() {
 		return dateOfBirth;
 	}
 	

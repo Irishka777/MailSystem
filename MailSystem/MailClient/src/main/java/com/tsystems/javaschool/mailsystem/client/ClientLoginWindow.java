@@ -29,10 +29,14 @@ import java.awt.event.WindowEvent;
 public class ClientLoginWindow extends JDialog {
 	
 	private final ClientMainWindow mainWindow;
-	private JDialog loginWindow;
+	private ClientLoginWindow loginWindow;
+	private ClientRegistrationWindow registrationWindow;
 	private JTextField addressTextField;
 	private JPasswordField passwordField;
-
+	
+	public void setEmailAddressTextField(String emailAddress) {
+		addressTextField.setText(emailAddress);
+	}
 	/**
 	 * Create the dialog.
 	 */
@@ -120,9 +124,11 @@ public class ClientLoginWindow extends JDialog {
 		
 		JButton registrationButton = new JButton("Registration");
 		registrationButton.setFont(new Font("Arial", Font.PLAIN, 16));
-		registrationButton.setEnabled(false);
 		registrationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				registrationWindow = new ClientRegistrationWindow(mainWindow,loginWindow);
+				registrationWindow.setLocationRelativeTo(loginWindow);
+				registrationWindow.setVisible(true);
 			}
 		});
 		

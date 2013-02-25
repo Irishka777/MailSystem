@@ -6,6 +6,7 @@ import javax.persistence.PersistenceException;
 import com.tsystems.javaschool.mailsystem.entities.MailBoxEntity;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MailBoxDAO;
 import com.tsystems.javaschool.mailsystem.mailserver.dao.MailBoxDAOImpl;
+import com.tsystems.javaschool.mailsystem.mailserver.server.Server;
 import com.tsystems.javaschool.mailsystem.shareableObjects.ServerResponse;
 
 public class MailBoxService {
@@ -27,6 +28,7 @@ public class MailBoxService {
 				}
 				return new ServerResponse(false,false,mailBox,null);
 			} catch (NoResultException e) {
+				Server.logger.error(e.getMessage());
 				return new ServerResponse(true,false,null,"There is no user with such email address");
 			} catch (Exception e) {
 				e.printStackTrace();
