@@ -53,4 +53,14 @@ public class ClientMailBoxService {
 			return new ServerResponse(true, true, null, "System error, program will be closed");	
 		}	
 	}
+	
+	public ServerResponse updateMailBoxData(MailBoxEntity mailBox) {
+		try {
+			output.writeObject(new CommandAndDataObject(ToDo.UpdateMailBoxData, mailBox));
+			return (ServerResponse) input.readObject();
+		} catch (Exception e) {
+			ClientProcess.logger.error(e.getMessage(),e);
+			return new ServerResponse(true, true, null, "System error, program will be closed");	
+		}	
+	}
 }

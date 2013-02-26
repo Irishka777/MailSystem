@@ -64,6 +64,7 @@ public class ClientMainWindow extends JFrame{
 	
 	private ClientLoginWindow loginWindow;
 	private ClientNewMessageWindow newMessageWindow;
+	private ClientPersonalDataWindow personalDataWindow;
 	
 	/**
 	 * Launch the application.
@@ -134,10 +135,29 @@ public class ClientMainWindow extends JFrame{
 		
 		JPanel foldersPanel = new JPanel();
 		foldersPanel.setLayout(new BorderLayout(0, 0));
+		foldersPanel.add(createUserButtonsPanel(), BorderLayout.NORTH);	
 		foldersPanel.add(createFoldersTreeScrollPane(), BorderLayout.CENTER);		
 		foldersPanel.add(createFolderButtonsPanel(), BorderLayout.SOUTH);
 		
 		return foldersPanel;
+	}
+	
+	private JPanel createUserButtonsPanel() {
+		JButton personalDataButton = new JButton("Personal data");
+		personalDataButton.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
+		personalDataButton.setFocusPainted(false);
+		personalDataButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				personalDataWindow = new ClientPersonalDataWindow(mainWindow);
+				personalDataWindow.setLocationRelativeTo(mainWindow);
+				personalDataWindow.setVisible(true);
+			}
+		});
+		
+		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.add(personalDataButton);
+		
+		return buttonsPanel;
 	}
 	
 	private JScrollPane createFoldersTreeScrollPane() {	

@@ -36,8 +36,21 @@ public class MailBoxDAOImpl implements MailBoxDAO {
 		return true;
 	}
 	
-	public boolean update(MailBoxEntity mailBox) {
-		return true;
+	public MailBoxEntity update(MailBoxEntity mailBox) {
+		EntityManager em = Server.emf.createEntityManager();
+		EntityTransaction trx = em.getTransaction();
+		
+		try {
+			trx.begin();
+			em.merge(mailBox);
+			trx.commit();
+		} finally {
+			if (trx.isActive()) {
+				trx.rollback();
+			}
+			em.close();
+		}
+		return mailBox;
 	}
 	
 	public boolean delete(MailBoxEntity mailBox) {

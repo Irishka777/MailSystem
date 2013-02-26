@@ -20,6 +20,11 @@
         <version>2.3.2</version>
         <executions>
           <execution>
+            <id>default-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
             <configuration>
               <archive>
                 <manifest>

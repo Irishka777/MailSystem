@@ -21,14 +21,14 @@ public class ServerProcess implements Runnable {
 	
 	private MessageService messageService = null;
 	private FolderService folderService = null;
-	private MailBoxService loginService = null;
+	private MailBoxService mailBoxService = null;
 	
 	public ServerProcess(Socket clientSocket, MessageService messageService,
-			FolderService folderService, MailBoxService loginService) {
+			FolderService folderService, MailBoxService mailBoxService) {
 		this.clientSocket = clientSocket;
 		this.messageService = messageService;
 		this.folderService = folderService;
-		this.loginService = loginService;
+		this.mailBoxService = mailBoxService;
 	}
 	
 	public void run() {	
@@ -43,13 +43,16 @@ public class ServerProcess implements Runnable {
 
 				switch (commandAndData.getCommand()) {
 				case Registration:		
-					output.writeObject(loginService.registration(commandAndData.getData()));
+					output.writeObject(mailBoxService.registration(commandAndData.getData()));
 					break;
 				case Login:
-					output.writeObject(loginService.login(commandAndData.getData()));
+					output.writeObject(mailBoxService.login(commandAndData.getData()));
+					break;
+				case UpdateMailBoxData:
+					output.writeObject(mailBoxService.updateMailBoxData(commandAndData.getData()));
 					break;
 				case GetMailBoxEntityByMailAddress:
-					output.writeObject(loginService.getMailBoxEntityByEmailAddress(commandAndData.getData()));
+					output.writeObject(mailBoxService.getMailBoxEntityByEmailAddress(commandAndData.getData()));
 					break;
 				case SendMessage:
 					output.writeObject(messageService.sendMessage(commandAndData.getData()));

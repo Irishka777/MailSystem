@@ -66,6 +66,18 @@ public class MailBoxService {
 		}
 	}
 	
+	public ServerResponse updateMailBoxData(Object mailBox) {
+		try {
+			return new ServerResponse(false, false, mailBoxDAO.update((MailBoxEntity) mailBox), null);
+		} catch (ClassCastException e) {
+			Server.logger.error(e.getMessage(), e);
+			return new ServerResponse(true, true, null,
+					"Wrong type of object, MailBoxEntity required to update a mailbox, error in programe code");
+		} catch (Exception e) {
+			Server.logger.error(e.getMessage(), e);
+			return new ServerResponse(true, true, null, "System error, program will be closed");
+		}
+	}
 	
 	public ServerResponse getMailBoxEntityByEmailAddress(Object emailAddress) {
 		try {

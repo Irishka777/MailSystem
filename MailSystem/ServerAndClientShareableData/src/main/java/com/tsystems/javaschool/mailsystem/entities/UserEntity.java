@@ -54,9 +54,9 @@ public class UserEntity implements Serializable {
 		return surname;
 	}
 	
-//	public void setDate(Calendar dateOfBirth) {
-//		this.dateOfBirth = dateOfBirth;
-//	}
+	public void setDate(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 	public Date getDate() {
 		return dateOfBirth;
 	}

@@ -9,9 +9,8 @@ import com.tsystems.javaschool.mailsystem.mailserver.server.Server;
 
 public class MessageDAOImpl implements MessageDAO {
 	
-	FolderDAO folderDAO = new FolderDAOImpl();
-	
 	public boolean send(MessageEntity message) {
+		FolderDAO folderDAO = new FolderDAOImpl();
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
@@ -38,6 +37,7 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 	
 	public boolean save(MessageEntity message) {
+		FolderDAO folderDAO = new FolderDAOImpl();
 		
 		EntityManager em = Server.emf.createEntityManager();
 		EntityTransaction trx = em.getTransaction();
