@@ -3,12 +3,7 @@ package com.tsystems.javaschool.mailsystem.entities;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @SuppressWarnings("serial")
@@ -25,8 +20,10 @@ public class MessageEntity implements Serializable {
 	
 	@OneToOne
 	private MailBoxEntity receiver;
-	
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
+
 	private String theme;
 	
 	@Column(columnDefinition = "TEXT")

@@ -6,5 +6,5 @@ public interface MailBoxDAO {
 	public boolean insert(MailBoxEntity mailBox);
 	public MailBoxEntity update(MailBoxEntity mailBox);
 	public boolean delete(MailBoxEntity mailBox);
-	public MailBoxEntity findByEmailAddress(String emailAddress);
+	public MailBoxEntity findByEmail(String emailAddress);
 }

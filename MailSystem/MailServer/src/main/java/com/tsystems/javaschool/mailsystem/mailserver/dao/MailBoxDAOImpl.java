@@ -28,7 +28,7 @@ public class MailBoxDAOImpl implements MailBoxDAO {
 			em.close();
 		}
 	
-		MailBoxEntity createdMailBox = findByEmailAddress(mailBox.getEmailAddress());
+		MailBoxEntity createdMailBox = findByEmail(mailBox.getEmail());
 		folderDAO.insert(new FolderEntity("Incoming messages",createdMailBox));
 		folderDAO.insert(new FolderEntity("Outgoing messages",createdMailBox));
 		folderDAO.insert(new FolderEntity("Draft messages",createdMailBox));
@@ -57,12 +57,12 @@ public class MailBoxDAOImpl implements MailBoxDAO {
 		return true;
 	}
 	
-	public MailBoxEntity findByEmailAddress(String emailAddress) {
+	public MailBoxEntity findByEmail(String email) {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		
-		TypedQuery<MailBoxEntity> query = em.createNamedQuery("findByEmailAddress", MailBoxEntity.class);
-		query.setParameter("address", emailAddress);
+		TypedQuery<MailBoxEntity> query = em.createNamedQuery("findByEmail", MailBoxEntity.class);
+		query.setParameter("address", email);
 		MailBoxEntity mailBox = null;
 		try {
 			mailBox = query.getSingleResult();

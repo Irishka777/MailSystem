@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MailSystem/MailClient/MailClient.iml" filepath="$PROJECT_DIR$/MailSystem/MailClient/MailClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MailSystem/MailServer/MailServer.iml" filepath="$PROJECT_DIR$/MailSystem/MailServer/MailServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MailSystem/MailSystem.iml" filepath="$PROJECT_DIR$/MailSystem/MailSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/ServerAndClientShareableData.iml" filepath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/ServerAndClientShareableData.iml" />
+    </modules>
+  </component>
+</project>
+

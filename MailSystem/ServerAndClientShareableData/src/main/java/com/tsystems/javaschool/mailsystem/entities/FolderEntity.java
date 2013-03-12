@@ -15,15 +15,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-//import javax.persistence.UniqueConstraint;
-
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Folder")//, uniqueConstraints = @UniqueConstraint( columnNames = { "folderName", "mailBox" }))
+@Table(name = "Folder")
 @NamedQueries({
-	@NamedQuery(name = "findByEmailAddressAndFolderName", query = "SELECT folder FROM FolderEntity folder WHERE " +
-			"folder.mailBox = :mailBox AND folder.folderName = :folderName"),
+	@NamedQuery(name = "findFolderByFolderNameAndEmail", query = "SELECT folder FROM FolderEntity folder WHERE " +
+			"folder.folderName = :folderName AND folder.mailBox = :mailBox"),
 	@NamedQuery(name = "findFoldersForMailBox", query = "SELECT folder FROM FolderEntity folder WHERE " +
 			"folder.mailBox = :mailBox")
 })

@@ -102,9 +102,9 @@ public class FolderDAOImpl implements FolderDAO {
 		
 		EntityManager em = Server.emf.createEntityManager();
 		
-		TypedQuery<FolderEntity> query = em.createNamedQuery("findByEmailAddressAndFolderName", FolderEntity.class);
-		query.setParameter("mailBox", emailAddress);
+		TypedQuery<FolderEntity> query = em.createNamedQuery("findFolderByFolderNameAndEmail", FolderEntity.class);
 		query.setParameter("folderName", folderName);
+		query.setParameter("mailBox", emailAddress);
 		FolderEntity folder = null;
 		try {
 			folder = query.getSingleResult();

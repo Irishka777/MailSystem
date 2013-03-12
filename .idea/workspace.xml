@@ -1,0 +1,1329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\.project" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\.settings\org.eclipse.core.resources.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\.settings\org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\.classpath" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\.project" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\.settings\org.eclipse.core.resources.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\.settings\org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\.settings\org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\MailClient-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\META-INF\log4j.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientLoginWindow$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientLoginWindow$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientLoginWindow$3.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientLoginWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$10.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$11.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$3.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$4.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$5.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$6.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$7.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$8.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow$9.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientMainWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientNewMessageWindow$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientNewMessageWindow$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientNewMessageWindow$3.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientNewMessageWindow$4.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientNewMessageWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientPersonalDataWindow$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientPersonalDataWindow$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientPersonalDataWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientProcess.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientRegistrationWindow$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientRegistrationWindow$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\client\ClientRegistrationWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\clientservice\ClientFolderService.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\clientservice\ClientMailBoxService.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\clientservice\ClientMessageService.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailClient\target\classes\com\tsystems\javaschool\mailsystem\models\MessagesTableModel.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\.classpath" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\.project" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\.settings\org.eclipse.core.resources.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\.settings\org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\.settings\org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\lib\mysql-connector-java-5.1.23-bin.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\MailServer-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\META-INF\log4j.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\META-INF\persistence.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\dao\FolderDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\dao\FolderDAOImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\dao\MailBoxDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\dao\MailBoxDAOImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\dao\MessageDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\dao\MessageDAOImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\server\Server.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\server\ServerProcess.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\service\FolderService.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\service\MailBoxService.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\MailServer\target\classes\com\tsystems\javaschool\mailsystem\mailserver\service\MessageService.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\.classpath" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\.project" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\.settings\org.eclipse.core.resources.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\.settings\org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\.settings\org.eclipse.m2e.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\EntitiesUML.ucls" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\ServerAndClientShareableData-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\entities\FolderEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\entities\MailBoxEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\entities\MessageEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\entities\UserEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\shareableObjects\CommandAndDataObject.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\shareableObjects\ServerResponse.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\target\classes\com\tsystems\javaschool\mailsystem\shareableObjects\ToDo.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/MailClient/src/main/java/com/tsystems/javaschool/mailsystem/client/ClientPersonalDataWindow.java" afterPath="$PROJECT_DIR$/MailSystem/MailClient/src/main/java/com/tsystems/javaschool/mailsystem/client/ClientPersonalDataWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/FolderDAOImpl.java" afterPath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/FolderDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/FolderEntity.java" afterPath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/FolderEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAO.java" afterPath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAOImpl.java" afterPath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MailBoxEntity.java" afterPath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MailBoxEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/MailBoxService.java" afterPath="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/MailBoxService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MessageEntity.java" afterPath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MessageEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/UserEntity.java" afterPath="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/UserEntity.java" />
+    </list>
+    <ignored path="MailSystem.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <file path="/Dummy.txt" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363081692287" ignored="false" />
+    <file path="/fragment.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362852488426" ignored="false" />
+    <file path="/index.jsp" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362352699238" ignored="false" />
+    <file path="$PROJECT_DIR$/../MailSystemWebApp/src/main/webapp/WEB-INF/web.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362347782654" ignored="false" />
+    <file path="/a.txt" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362382811006" ignored="false" />
+    <file path="/web.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362385056698" ignored="false" />
+    <file path="/pom.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363081387709" ignored="false" />
+    <file path="/LoginServlet.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362353474141" ignored="false" />
+    <file path="/login.jsp" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362390759122" ignored="false" />
+    <file path="/messagesList.jsp" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362391397448" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/.idea/workspace.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362871603736" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/UserEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362851152929" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/MessageEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362851145052" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/FolderEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362851123245" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/MailBoxEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362851132614" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/Folder.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362846634099" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/MailBox.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362845841924" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/Message.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362846744399" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/User.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362845841924" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/pom.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362856390640" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/pom.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850534821" ignored="false" />
+    <file path="/Folder.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362846633037" ignored="false" />
+    <file path="/MailBoxEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362846886518" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/resources/META-INF/persistence.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362847396809" ignored="false" />
+    <file path="/persistence.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363032030661" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MailBoxDAOImpl.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362855781060" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MessageDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850101498" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/FolderDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850173728" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MailBoxDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850012906" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MessageDAOImpl.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362855879014" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/FolderDAOImpl.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850197988" ignored="false" />
+    <file path="/FolderDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362849202223" ignored="false" />
+    <file path="/FolderDAOImpl.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850165252" ignored="false" />
+    <file path="/MailBoxDAOImpl.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850419976" ignored="false" />
+    <file path="/MailBoxDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850012906" ignored="false" />
+    <file path="/MessageDAOImpl.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850697372" ignored="false" />
+    <file path="/MessageDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850101498" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MailBoxBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362850688807" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/Main.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362852458710" ignored="false" />
+    <file path="/Main.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362852457410" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/webapp/resources/css/style.css" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362866285839" ignored="false" />
+    <file path="/style.css" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362866266109" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/service/MailBoxService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362855934136" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/service/FolderService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362855999894" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/service/MessageService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362855934136" ignored="false" />
+    <file path="/FolderService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362857554456" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/service/FolderService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362857554455" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/service/MessageService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362858341969" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/pom.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362856528906" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/service/MailBoxService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362858341969" ignored="false" />
+    <file path="/MailBoxService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363036180985" ignored="false" />
+    <file path="/MessageService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362858333761" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/java/com/tsystems/javaschool/webmailsystem/managedbean/CreateMessageForm.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362862872665" ignored="false" />
+    <file path="/CreateMessageForm.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362862833035" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/webapp/createMessageForm.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362863516114" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/java/com/tsystems/javaschool/webmailsystem/managedbean/CreateMessageBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362862951115" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/java/com/tsystems/javaschool/webmailsystem/managedbean/LoginBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362862941355" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/webapp/loginForm.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362863549604" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/webapp/response.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362867541090" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/webapp/signUpForm.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362862950012" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/java/com/tsystems/javaschool/webmailsystem/managedbean/SignUpBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362862950012" ignored="false" />
+    <file path="/createMessageForm.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362863511447" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/WebMailSystem-web/src/main/webapp/messageSentPage.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362863953073" ignored="false" />
+    <file path="/messageSentPage.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362863464489" ignored="false" />
+    <file path="/loginForm.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362863547293" ignored="false" />
+    <file path="/response.xhtml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362867514306" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/.idea/vcs.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362869066925" ignored="false" />
+    <file path="$PROJECT_DIR$/../WebMailSystem/.idea/modules.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1362869175518" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/resources/META-INF/persistence.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363032683950" ignored="false" />
+    <file path="/UserEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363034125323" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/entity/UserEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363034666705" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/service/MailBoxService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070393082" ignored="false" />
+    <file path="dbtable:/b2563434/8d23d998-990c-4eb5-a2bd-a19d8fc7e992/mailsystemdb..mailbox" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363036862618" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/pom.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363039671324" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/service/MessageService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070398756" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/FolderDAOBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070318906" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/service/FolderService.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070387354" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MailBoxDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070393082" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MailBoxDAOBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070386774" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MessageDAOBean.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070386774" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/FolderDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070386774" ignored="false" />
+    <file path="D:/WebMailSystem/WebMailSystem-ejb/src/main/java/com/tsystems/javaschool/webmailsystem/ejb/dao/MessageDAO.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363070398757" ignored="false" />
+    <file path="/FolderEntity.java" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363081161165" ignored="false" />
+    <file path="D:/WebMailSystem/pom.xml" changelist="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" time="1363081390128" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/MailSystem$Server.coverage" NAME="Server Coverage Results" MODIFIED="1363036626498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DatabaseView">
+    <flatten value="false" />
+    <groupTables value="false" />
+    <sortChildren value="false" />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="MailSystem" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="MessageEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MessageEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="0" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FolderService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/FolderService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/MessageService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/UserEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MailSystem/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="31" selection-start="488" selection-end="488" vertical-scroll-proportion="0.37037036">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailBoxService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/MailBoxService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailBoxDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="71" selection-start="1670" selection-end="1670" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FolderDAOImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/FolderDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="0" selection-start="2381" selection-end="2381" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FolderEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/FolderEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="40" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailBoxEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MailBoxEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$USER_HOME$/.m2/settings.xml" />
+        <option value="$PROJECT_DIR$/MailSystem/WebMailServer/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/MailSystem/WebMailServer/pom.xml" />
+        <option value="$PROJECT_DIR$/MailSystem/WebMailServer/src/main/webapp/login.jsp" />
+        <option value="$PROJECT_DIR$/MailSystem/WebMailServer/src/main/webapp/messagesList.jsp" />
+        <option value="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/FolderEntity.java" />
+        <option value="$PROJECT_DIR$/MailSystem/WebMailServer/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MailBoxEntity.java" />
+        <option value="dbtable:/7bfb2aca/4b93e6e2-6b92-44e2-a6c4-e6d64a3105db/mailsystemdb..mailbox" />
+        <option value="dbtable:/7bfb2aca/4b93e6e2-6b92-44e2-a6c4-e6d64a3105db/mailsystemdb..user" />
+        <option value="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAOImpl.java" />
+        <option value="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MessageEntity.java" />
+        <option value="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/UserEntity.java" />
+        <option value="$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/FolderEntity.java" />
+        <option value="$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/FolderDAOImpl.java" />
+        <option value="$PROJECT_DIR$/MailSystem/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ServerAndClientShareableData" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ServerAndClientShareableData" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="MailSystem" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="MailSystem" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="MailServer" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="MailServer" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>JPA issues</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JpaQueryApiInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServerAndClientShareableData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServerAndClientShareableData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MailClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_directory_selection" value="$PROJECT_DIR$/MailSystem/WebMailServer/src/main/java" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="Database.TableEditor.Splitter" value="0.9" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tsystems.javaschool.mailsystem.webmailserver" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IDEAWorkspace\MailSystem\MailSystem\ServerAndClientShareableData\src\main\java\com\tsystems\javaschool\mailsystem" />
+      <recent name="D:\IDEAWorkspace\MailSystem\MailSystem\WebMailServer\src\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IDEAWorkspace\MailSystem\MailSystem\WebMailServer\src\main\java" />
+      <recent name="D:\IDEAWorkspace\MailSystem\MailSystem" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ClientMainWindow">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="CFConfiguration" factoryName="Remote">
+      <option name="PORT" value="80" />
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <option name="USERNAME" value="" />
+        <option name="PASSWORD" value="" />
+        <data />
+      </server-settings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_MailSystem" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="61343" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Server" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="com.tsystems.javaschool.mailsystem.mailserver.server.Server" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MailServer" />
+      <envs />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ClientMainWindow" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="com.tsystems.javaschool.mailsystem.client.ClientMainWindow" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MailClient" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tomcat 7.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="WebMailServer:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_MailSystem" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="61343" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="WebMailServer:war" />
+        </option>
+      </method>
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Application.Server" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ClientMainWindow" />
+      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="07eaf3a2-17b2-4d5c-acaf-21277031ccd0" name="Default" comment="" />
+      <created>1362344354416</created>
+      <updated>1362344354416</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.007575758" sideWeight="0.44615385" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30940172" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14059754" sideWeight="0.43691587" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33504274" sideWeight="0.49688473" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.49688473" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24208567" sideWeight="0.49264705" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2621212" sideWeight="0.5692308" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41666666" sideWeight="0.5692308" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43076923" sideWeight="0.99813783" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21439394" sideWeight="0.20683761" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44957265" sideWeight="0.49688473" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34423676" sideWeight="0.08611599" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="19" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="10" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_15/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="187" column="0" selection-start="6230" selection-end="6230" vertical-scroll-proportion="0.33246073" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/server/ServerProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="0" selection-start="1537" selection-end="1537" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7bfb2aca/4b93e6e2-6b92-44e2-a6c4-e6d64a3105db/mailsystemdb..user">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/7bfb2aca/4b93e6e2-6b92-44e2-a6c4-e6d64a3105db/mailsystemdb..mailbox">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/MailBoxService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/MessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/MailBoxDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="71" selection-start="1670" selection-end="1670" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/service/FolderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/MailServer/src/main/java/com/tsystems/javaschool/mailsystem/mailserver/dao/FolderDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="0" selection-start="2381" selection-end="2381" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/FolderEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="40" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MailBoxEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/MessageEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/ServerAndClientShareableData/src/main/java/com/tsystems/javaschool/mailsystem/entities/UserEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MailSystem/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="31" selection-start="488" selection-end="488" vertical-scroll-proportion="0.37037036">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

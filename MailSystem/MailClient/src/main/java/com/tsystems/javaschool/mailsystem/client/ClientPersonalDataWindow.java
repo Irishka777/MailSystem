@@ -80,7 +80,7 @@ public ClientPersonalDataWindow(ClientMainWindow clientMainWindow) {
 	private JPanel createSurnamePanel() {
 		surnameTextField = new JTextField();
 		surnameTextField.setFont(new Font("Arial", Font.PLAIN, 14));
-		surnameTextField.setText(mainWindow.getUserMailBox().getUser().getSurname());
+		surnameTextField.setText(mainWindow.getUserMailBox().getUser().getLastName());
 		
 		JLabel surnameLabel = new JLabel("Surname:");
 		surnameLabel.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 14));
@@ -163,7 +163,7 @@ public ClientPersonalDataWindow(ClientMainWindow clientMainWindow) {
 			return;
 		}
 		mainWindow.getUserMailBox().getUser().setName(nameTextField.getText());
-		mainWindow.getUserMailBox().getUser().setSurname(surnameTextField.getText());
+		mainWindow.getUserMailBox().getUser().setLastName(surnameTextField.getText());
 		mainWindow.getUserMailBox().getUser().setDate((Date) dateOfBirthSpinner.getValue());
 		mainWindow.getUserMailBox().getUser().setPhoneNumber(phoneNumberTextField.getText());
 		ServerResponse response = mainWindow.getClientProcess().getClientMailBoxService()

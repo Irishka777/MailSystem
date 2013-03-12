@@ -14,22 +14,22 @@ public class MailBoxService {
 	
 	public ServerResponse login(Object neededMailBox) {
 		try {
-			MailBoxEntity mailBox = mailBoxDAO.findByEmailAddress(((MailBoxEntity) neededMailBox).getEmailAddress());
+			MailBoxEntity mailBox = mailBoxDAO.findByEmail(((MailBoxEntity) neededMailBox).getEmail());
 			byte[] password = mailBox.getPassword();
 			byte[] neededPassword = ((MailBoxEntity) neededMailBox).getPassword();
 			if (password.length != neededPassword.length) {
 				Server.logger.info("Entered password for mailbox with email address " 
-						+ ((MailBoxEntity) neededMailBox).getEmailAddress() + " is wrong");
+						+ ((MailBoxEntity) neededMailBox).getEmail() + " is wrong");
 				return new ServerResponse(true, false, null, "Entered password is wrong");
 			}
 			for (int i = 0; i < password.length; i++) {
 				if (password[i] != neededPassword[i]) {
 					Server.logger.info("Entered password for mailbox with email address " 
-							+ ((MailBoxEntity) neededMailBox).getEmailAddress() + " is wrong");
+							+ ((MailBoxEntity) neededMailBox).getEmail() + " is wrong");
 					return new ServerResponse(true, false, null, "Entered password is wrong");
 				}
 			}
-			Server.logger.info("Successful login into mailbox " + mailBox.getEmailAddress());
+			Server.logger.info("Successful login into mailbox " + mailBox.getEmail());
 			return new ServerResponse(false, false, mailBox, null);
 		} catch (ClassCastException e) {
 			Server.logger.error(e.getMessage(), e);
@@ -47,7 +47,7 @@ public class MailBoxService {
 	public ServerResponse registration(Object mailBox) {
 		try {
 			if (mailBoxDAO.insert((MailBoxEntity) mailBox)) {
-				Server.logger.info("Mailbox with email address" + ((MailBoxEntity) mailBox).getEmailAddress() + " successfully created");
+				Server.logger.info("Mailbox with email address" + ((MailBoxEntity) mailBox).getEmail() + " successfully created");
 				return new ServerResponse(false, false, "Mailbox successfully created", null);
 			}
 			Server.logger.error("If the program is working properly, this message should not appear");
@@ -81,7 +81,7 @@ public class MailBoxService {
 	
 	public ServerResponse getMailBoxEntityByEmailAddress(Object emailAddress) {
 		try {
-			return new ServerResponse(false, false, mailBoxDAO.findByEmailAddress(((String) emailAddress).toLowerCase()), null);
+			return new ServerResponse(false, false, mailBoxDAO.findByEmail(((String) emailAddress).toLowerCase()), null);
 		} catch (ClassCastException e) {
 			Server.logger.error(e.getMessage(), e);
 			return new ServerResponse(true, true, null,

@@ -6,31 +6,25 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "MailBox")
-@NamedQuery(name = "findByEmailAddress", query = "SELECT box FROM MailBoxEntity box WHERE box.emailAddress = :address")
+@NamedQuery(name = "findByEmail", query = "SELECT box FROM MailBoxEntity box WHERE box.email = :address")
 public class MailBoxEntity implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
 	
 	@Column(nullable = false, unique = true)
-	private String emailAddress;
+	private String email;
 	
 	@Column(columnDefinition = "binary(50)")
 	private byte[] password;
-	
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar creationDate;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -38,8 +32,8 @@ public class MailBoxEntity implements Serializable {
 	
 	public MailBoxEntity() {}
 	
-	public MailBoxEntity(String emailAddress, String password, UserEntity user) {
-		this.emailAddress = emailAddress.toLowerCase();
+	public MailBoxEntity(String email, String password, UserEntity user) {
+		this.email = email.toLowerCase();
 
 		try {
 			String salt = "qwertyuiopasdfghjklzxcvbnm";
@@ -69,11 +63,11 @@ public class MailBoxEntity implements Serializable {
 		return id;
 	}
 	
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress.toLowerCase();
+	public void setEmail(String email) {
+		this.email = email.toLowerCase();
 	}
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail() {
+		return email;
 	}
 	
 //	public void setPassword(String password) {
@@ -98,6 +92,6 @@ public class MailBoxEntity implements Serializable {
 	}
 	
 	public String toString() {
-		return getEmailAddress();
+		return getEmail();
 	}
 }

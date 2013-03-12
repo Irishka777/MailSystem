@@ -3,11 +3,7 @@ package com.tsystems.javaschool.mailsystem.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
@@ -17,18 +13,19 @@ public class UserEntity implements Serializable {
 	@GeneratedValue
 	private long id;
 	
-	private String name;
-	private String surname;
-	
-	@Column(columnDefinition = "DATE")
+	private String firstName;
+	private String lastName;
+
+	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
+
 	private String phoneNumber;
 	
 	public UserEntity() {}
 	
-	public UserEntity(String name, String surname, Date dateOfBirth, String phoneNumber) {
-		this.name = name;
-		this.surname = surname;
+	public UserEntity(String firstName, String lastName, Date dateOfBirth, String phoneNumber) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 	}
@@ -40,18 +37,18 @@ public class UserEntity implements Serializable {
 		return id;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getName() {
-		return name;
+		return firstName;
 	}
 	
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public String getSurname() {
-		return surname;
+	public String getLastName() {
+		return lastName;
 	}
 	
 	public void setDate(Date dateOfBirth) {

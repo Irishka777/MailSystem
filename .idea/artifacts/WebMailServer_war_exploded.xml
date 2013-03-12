@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="WebMailServer:war exploded">
+    <output-path>$PROJECT_DIR$/MailSystem/WebMailServer/target/WebMailServer</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="WebMailServer/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WebMailServer" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="MailServer-1.0.jar">
+            <element id="module-output" name="MailServer" />
+          </element>
+          <element id="archive" name="ServerAndClientShareableData-1.0.jar">
+            <element id="module-output" name="ServerAndClientShareableData" />
+          </element>
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:4.1.9.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.1.0.GA" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.17.1-GA" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:4.1.9.Final" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.1.Final" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.2" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
